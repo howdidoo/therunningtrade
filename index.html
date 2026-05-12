@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Running Trade — A Smuggler's Reckoning, 1725</title>
+  <meta name="description" content="An educational adventure game set in the smuggling economy of 1720s Britain." />
+
+  <!-- Period-appropriate type: IM Fell English (a 17th-c. revival) for body, Press Start 2P for chrome. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Press+Start+2P&amp;family=VT323&amp;display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Outer parchment frame -->
+  <div id="game-frame" class="frame">
+
+    <!-- Title bar -->
+    <header class="topbar">
+      <div class="title-block">
+        <div class="title-pixel" id="game-title">THE RUNNING TRADE</div>
+        <div class="title-sub" id="game-subtitle">A Smuggler's Reckoning &mdash; Anno Dom. <span id="game-year">1725</span></div>
+      </div>
+      <div class="meters">
+        <div class="meter" title="How much the Customs suspect you">
+          <div class="meter-label">EXPOSURE</div>
+          <div class="meter-bar"><div class="meter-fill exposure" id="meter-exposure"></div></div>
+          <div class="meter-num" id="meter-exposure-num">0</div>
+        </div>
+        <div class="meter" title="How far your confederates trust you">
+          <div class="meter-label">TRUST</div>
+          <div class="meter-bar"><div class="meter-fill trust" id="meter-trust"></div></div>
+          <div class="meter-num" id="meter-trust-num">50</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Act banner -->
+    <div class="act-banner" id="act-banner">Act I &mdash; An Awakening at the Crown</div>
+
+    <!-- Main play area -->
+    <main class="stage">
+      <!-- Picture slot — JPGs go in assets/images/, referenced from content.js -->
+      <section class="picture-pane">
+        <div class="picture-frame">
+          <img id="scene-image" src="assets/images/map.jpg" alt="Scene illustration" />
+          <div class="scanlines" aria-hidden="true"></div>
+        </div>
+        <div class="picture-caption" id="scene-caption">A new chart of the English Channel and adjacent coasts.</div>
+      </section>
+
+      <!-- Narration + dialogue + choices -->
+      <section class="text-pane">
+        <div class="scroll" id="scene-scroll">
+          <h2 class="scene-title" id="scene-title">The Crown Inn, near the Quay at Poole</h2>
+          <div class="scene-body" id="scene-body"></div>
+          <div class="choices" id="choices"></div>
+        </div>
+
+        <!-- Inventory tray -->
+        <div class="inventory" id="inventory" aria-label="Property in your possession">
+          <div class="inv-label">PROPERTY</div>
+          <ul class="inv-items" id="inv-items"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Foot bar: utility buttons -->
+    <footer class="footbar">
+      <button class="btn-pixel" id="btn-restart" type="button">Restart</button>
+      <button class="btn-pixel" id="btn-mute"    type="button">Mute</button>
+      <button class="btn-pixel" id="btn-about"   type="button">About</button>
+      <span class="footnote" id="footnote">An educational game &mdash; press <span class="kbd">M</span> to mute.</span>
+    </footer>
+
+    <!-- Introduction screen — full-frame overlay until the player enters a name -->
+    <div class="intro" id="intro">
+      <div class="intro-card">
+        <div class="intro-title-pixel" id="intro-title">THE RUNNING TRADE</div>
+        <div class="intro-sub" id="intro-sub">A Smuggler's Reckoning &mdash; Anno Dom. 1725</div>
+        <div class="intro-image">
+          <img src="assets/images/map.jpg" alt="A new chart of the English Channel and adjacent coasts" />
+          <div class="scanlines" aria-hidden="true"></div>
+        </div>
+        <div class="intro-body" id="intro-body"></div>
+        <form class="intro-form" id="intro-form" autocomplete="off">
+          <label for="intro-name" id="intro-name-label">Pray, sir, by what name shall the gentlemen of the trade know you?</label>
+          <input
+            id="intro-name"
+            type="text"
+            maxlength="32"
+            spellcheck="false"
+            placeholder="e.g. Bowden"
+            required
+          />
+          <button type="submit" class="btn-pixel" id="intro-begin">Begin</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- About / historical-note overlay -->
+    <div class="overlay" id="overlay" hidden>
+      <div class="overlay-card">
+        <h3 id="overlay-title">A Note from the Author</h3>
+        <div id="overlay-body"></div>
+        <button class="btn-pixel" id="overlay-close" type="button">Close</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Content first (data), engine second (uses data). Both are plain scripts so editing is easy. -->
+  <script src="js/content.js"></script>
+  <script src="js/engine.js"></script>
+</body>
+</html>
