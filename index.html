@@ -20,23 +20,12 @@
   <!-- Outer parchment frame -->
   <div id="game-frame" class="frame">
 
-    <!-- Title bar -->
+    <!-- Title bar (compact, single line) -->
     <header class="topbar">
       <div class="title-block">
         <div class="title-pixel" id="game-title">THE RUNNING TRADE</div>
-        <div class="title-sub" id="game-subtitle">A Smuggler's Reckoning &mdash; Anno Dom. <span id="game-year">1725</span></div>
-      </div>
-      <div class="meters">
-        <div class="meter" title="How much the Customs suspect you">
-          <div class="meter-label">EXPOSURE</div>
-          <div class="meter-bar"><div class="meter-fill exposure" id="meter-exposure"></div></div>
-          <div class="meter-num" id="meter-exposure-num">0</div>
-        </div>
-        <div class="meter" title="How far your confederates trust you">
-          <div class="meter-label">TRUST</div>
-          <div class="meter-bar"><div class="meter-fill trust" id="meter-trust"></div></div>
-          <div class="meter-num" id="meter-trust-num">50</div>
-        </div>
+        <div class="title-sep">&mdash;</div>
+        <div class="title-sub" id="game-subtitle">A Smuggler's Reckoning, Anno Dom. <span id="game-year">1725</span></div>
       </div>
     </header>
 
@@ -49,9 +38,25 @@
       <section class="picture-pane">
         <div class="picture-frame">
           <img id="scene-image" src="assets/images/map.jpg" alt="Scene illustration" />
-          <div class="scanlines" aria-hidden="true"></div>
         </div>
         <div class="picture-caption" id="scene-caption">A new chart of the English Channel and adjacent coasts.</div>
+
+        <!-- Meters now sit beneath the picture, as a control panel -->
+        <div class="meters" id="meters" aria-label="Standing in the trade">
+          <div class="meter" title="How much the Customs suspect you">
+            <div class="meter-label">EXPOSURE</div>
+            <div class="meter-bar"><div class="meter-fill exposure" id="meter-exposure"></div></div>
+            <div class="meter-num" id="meter-exposure-num">0</div>
+          </div>
+          <div class="meter" title="How far your confederates trust you">
+            <div class="meter-label">TRUST</div>
+            <div class="meter-bar"><div class="meter-fill trust" id="meter-trust"></div></div>
+            <div class="meter-num" id="meter-trust-num">50</div>
+          </div>
+        </div>
+
+        <!-- Chart button — styled like a choice, distinct from the footer chrome -->
+        <button class="btn-chart" id="btn-map" type="button">Consult the chart of the Channel</button>
       </section>
 
       <!-- Narration + dialogue + choices -->
@@ -84,8 +89,24 @@
         <div class="intro-title-pixel" id="intro-title">THE RUNNING TRADE</div>
         <div class="intro-sub" id="intro-sub">A Smuggler's Reckoning &mdash; Anno Dom. 1725</div>
         <div class="intro-image">
-          <img src="assets/images/map.jpg" alt="A new chart of the English Channel and adjacent coasts" />
-          <div class="scanlines" aria-hidden="true"></div>
+          <!--
+            Title media: prefers introduction.mp4; falls back to introduction.gif
+            (if you provide one) and finally to introduction.jpg as a still poster.
+            Drop any of those files into assets/images/ — the browser will pick
+            the first one it can play.
+          -->
+          <video
+            id="intro-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            poster="assets/images/introduction.jpg"
+          >
+            <source src="assets/images/introduction.mp4" type="video/mp4" />
+            <img src="assets/images/introduction.jpg" alt="The Running Trade — title illustration" />
+          </video>
         </div>
         <div class="intro-body" id="intro-body"></div>
         <form class="intro-form" id="intro-form" autocomplete="off">
@@ -103,7 +124,20 @@
       </div>
     </div>
 
-    <!-- About / historical-note overlay -->
+    <!-- Sailing dialogue — shown whenever the player sets to sea -->
+    <div class="sail-modal" id="sail-modal" hidden>
+      <div class="sail-card">
+        <div class="sail-flag">WEIGH ANCHOR</div>
+        <div class="sail-title" id="sail-title">The Vessel Puts Out</div>
+        <div class="sail-map">
+          <img src="assets/images/map.jpg" alt="A chart of the English Channel and adjacent coasts" />
+        </div>
+        <div class="sail-conditions" id="sail-conditions"></div>
+        <button class="btn-pixel" id="sail-continue" type="button">Continue under sail</button>
+      </div>
+    </div>
+
+    <!-- About / historical-note / chart overlay -->
     <div class="overlay" id="overlay" hidden>
       <div class="overlay-card">
         <h3 id="overlay-title">A Note from the Author</h3>
