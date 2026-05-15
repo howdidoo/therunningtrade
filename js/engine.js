@@ -34,12 +34,18 @@
     trustNum:     document.getElementById('meter-trust-num'),
     btnRestart:   document.getElementById('btn-restart'),
     btnMute:      document.getElementById('btn-mute'),
+    btnMap:       document.getElementById('btn-map'),
     btnAbout:     document.getElementById('btn-about'),
     overlay:      document.getElementById('overlay'),
     overlayTitle: document.getElementById('overlay-title'),
     overlayBody:  document.getElementById('overlay-body'),
     overlayClose: document.getElementById('overlay-close'),
     footnote:     document.getElementById('footnote'),
+
+    sailModal:    document.getElementById('sail-modal'),
+    sailTitle:    document.getElementById('sail-title'),
+    sailCond:     document.getElementById('sail-conditions'),
+    sailCont:     document.getElementById('sail-continue'),
 
     intro:        document.getElementById('intro'),
     introTitle:   document.getElementById('intro-title'),
@@ -84,13 +90,24 @@
   }
 
   // -------- Meters --------
+  // Apply a level-1..level-4 class so the colour deepens as the bar fills.
+  function applyMeterLevel(fill, value) {
+    fill.classList.remove('level-1', 'level-2', 'level-3', 'level-4');
+    let lvl = 'level-1';
+    if (value > 75)      lvl = 'level-4';
+    else if (value > 50) lvl = 'level-3';
+    else if (value > 25) lvl = 'level-2';
+    fill.classList.add(lvl);
+  }
   function setMeters() {
     el.expFill.style.width   = state.exposure + '%';
     el.expNum.textContent    = state.exposure;
     el.trustFill.style.width = state.trust + '%';
     el.trustNum.textContent  = state.trust;
+    applyMeterLevel(el.expFill,   state.exposure);
+    applyMeterLevel(el.trustFill, state.trust);
     el.expFill.classList.toggle('critical', state.exposure >= 80);
-    el.trustFill.classList.toggle('critical', state.trust <= 20);
+    el.trustFill.classList.toggle('critical', state.trust <= 25);
   }
 
   // -------- Inventory --------
@@ -260,12 +277,15 @@
   }
 
   // -------- Threshold interrupts --------
+  // Trust threshold raised to 15: a smuggler with very little standing
+  // among his confederates is in real danger of being sold by them
+  // before he can sell anyone himself.
   function checkThresholds() {
     if (state.exposure >= 100 && !state.flags.indictedAuto) {
       state.flags.indictedAuto = true;
       return 'auto_indicted';
     }
-    if (state.trust <= 0 && !state.flags.betrayedAuto) {
+    if (state.trust <= 15 && !state.flags.betrayedAuto) {
       state.flags.betrayedAuto = true;
       return 'auto_betrayed';
     }
@@ -345,6 +365,34 @@
       Audio.sfx('ending');
       showEnding(scene);
     }
+
+    // Sailing interstitial: when the player puts to sea, show the chart
+    // and the conditions of wind, tide, and weather before play resumes.
+    if (scene.sailing) {
+      showSailingModal(scene);
+    }
+  }
+
+  // -------- Sailing modal --------
+  function showSailingModal(scene) {
+    const s = scene.sailing || {};
+    el.sailTitle.textContent = withName(s.title || 'The Vessel Puts Out');
+    el.sailCond.innerHTML = formatInline(withName(s.text || ''));
+    el.sailModal.removeAttribute('hidden');
+  }
+  function hideSailingModal() {
+    el.sailModal.setAttribute('hidden', '');
+  }
+
+  // -------- Map overlay --------
+  function showMap() {
+    el.overlay.removeAttribute('hidden');
+    el.overlay.querySelector('.overlay-card').classList.remove('ending-card');
+    el.overlayTitle.textContent = 'A Chart of the Channel';
+    el.overlayBody.innerHTML =
+      '<div class="map-overlay"><img src="assets/images/map.jpg" alt="A new chart of the English Channel and adjacent coasts" /></div>' +
+      '<p style="margin-top:10px;font-family:var(--font-sc);font-style:italic;color:var(--ink-soft);text-align:center;">' +
+      'A new chart of the English Channel and adjacent coasts.</p>';
   }
 
   // -------- Ending overlay --------
@@ -487,7 +535,9 @@
     });
     el.btnMute.addEventListener('click', () => Audio.toggleMute());
     el.btnAbout.addEventListener('click', showAbout);
+    el.btnMap.addEventListener('click', showMap);
     el.overlayClose.addEventListener('click', () => el.overlay.setAttribute('hidden', ''));
+    el.sailCont.addEventListener('click', hideSailingModal);
 
     // M key toggles mute
     document.addEventListener('keydown', (e) => {

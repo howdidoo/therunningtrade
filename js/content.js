@@ -314,6 +314,10 @@ const CONTENT = {
       title: 'The Channel, by the Light of the Stern Lantern',
       image: 'assets/images/act1_channel.jpg',
       caption: 'The Dolphin running before a fair westerly, course south by east.',
+      sailing: {
+        title: 'Poole to St Helier — under sail',
+        text: 'Wind: *south-westerly*, fresh and steady. Tide: half-ebb, setting south. Glass: rising. The Dolphin makes seven knots upon a broad reach, course south by east for the Channel Islands. A waning moon will not rise these three hours; the stern lantern is the only light upon the sea.'
+      },
       body: [
         'The wind serves; the sloop heels and the lantern at the stern throws its yellow shudder upon the wake. Cooper is at the tiller. The boy &mdash; a thin lad called **Ned**, no more than fifteen &mdash; brings up small beer and a wedge of ship\'s cheese.',
         'You have hours before St Helier. There are matters to consider.'
@@ -463,6 +467,10 @@ const CONTENT = {
       title: 'A Squall in the Mid-Channel',
       image: 'assets/images/act2_storm.jpg',
       caption: 'The Dolphin labouring under reefed mainsail.',
+      sailing: {
+        title: 'Cherbourg to Pevensey — under sail',
+        text: 'Wind: *north-westerly*, freshening; the glass is falling. Tide: flood, against. The Dolphin runs eight knots north-north-east under a deep-reefed mainsail. Visibility a league and lessening. The ankers are double-lashed below; the cutter *Greyhound* is reported between Beachy Head and Pevensey.'
+      },
       body: [
         'You are eight leagues off Cape Barfleur when the squall comes on. The sloop heels until the lee gunwale is a-wash. Cooper, with no expression at all, gives the helm half a point free.',
         'A tub breaks loose below. If it is not secured, the cargo will be ruined, and worse, may shift and broach the vessel.'
@@ -586,6 +594,10 @@ const CONTENT = {
       title: 'A Rendezvous off the Needles',
       image: 'assets/images/act3_rendezvous.jpg',
       caption: 'Two sails meet in the Channel; a transhipment by darkness.',
+      sailing: {
+        title: 'To the Needles — under sail',
+        text: 'Wind: *light airs from the west*, the sea near mirror-flat. Tide: slack water. The Dolphin lies-to under main alone, two leagues south of the Needles, awaiting the topsails of the Bordeaux trader *Prosperity*. No moon; a slow drift of high cloud; lanterns shielded against any chance sail.'
+      },
       body: [
         'You meet the *Prosperity*, a Bordeaux trader, in the Channel south of the Needles. She carries (by her papers) only forty pieces of wine. In her hold are also the chests of tea, in a false bulkhead aft.',
         'It falls to you to draw the manifest you will present at Poole &mdash; how much shall be declared, and how much hidden.'
@@ -830,7 +842,9 @@ const CONTENT = {
       ],
       choices: [
         { text: 'Betray him to the Customs at the door &mdash; for the £500 informer\'s reward.',
-          target: '5.3_betray'
+          target: '5.3_betray',
+          effects: { trust: -60, exposure: -10 },
+          lesson: 'Selling Boyse in his own parlour was the most absolute breach the running trade knew. The £500 reward bought the Crown\'s gratitude — and forfeited every confederate at once. *Trust falls to nothing*: in the language of the trade, you are now a man whose word no smuggler will take, in any port from Falmouth to the Forth. Defoe observed of such informers that they were "the best paid and least loved of all His Majesty\'s servants".'
         },
         { text: 'Walk out. Take a cottage in the Purbecks. Live honest, however slow.',
           target: '5.4_honest'
@@ -892,6 +906,10 @@ const CONTENT = {
       title: 'The Last Run — The Lizard, February 1726',
       image: 'assets/images/act5_lastrun.jpg',
       caption: 'A heavy sea at the Lizard; an East-Indiaman lying-to off the Manacles.',
+      sailing: {
+        title: 'To the Lizard — under sail',
+        text: 'Wind: *gale from the south-west*, force eight and rising. Tide: ebb, running hard along the reef. The Dolphin runs under storm canvas alone, course west by north for the Manacles. Visibility a half-mile and closing. The Lizard light shows now and again through the spray. The East-Indiaman *Bohea* is reported lying-to in the Soundings.'
+      },
       body: [
         'You and Boyse make terms. One run, one cargo: three hundred chests of *Bohea* tea, transhipped from an East-Indiaman in the Soundings, to be landed in coves between the Lizard and Mount\'s Bay. The profit will be three thousand pounds at least.',
         'In February, in a sea that has set the very lighthouses asway, you bring the Dolphin up under the lee of the Manacles and take aboard the chests by the lantern of a man whose name you never learn. The shore-party is waiting at Cadgwith Cove. The wind is right. The Customs are watching the Sussex coast, where you are not.',
