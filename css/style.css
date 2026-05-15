@@ -644,7 +644,8 @@ body {
     var(--paper-light);
   border: 3px double var(--ink);
   border-radius: var(--frame-radius);
-  max-width: 560px;
+  /* Grow up to 820px, but never wider than the viewport with a small margin. */
+  max-width: min(820px, 94vw);
   width: 100%;
   padding: 18px 22px 20px;
   box-shadow:
@@ -783,8 +784,12 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
-.delta-chip.up   .delta-num { color: var(--wax-red); }
-.delta-chip.down .delta-num { color: var(--moss); }
+/* Exposure rising is bad (red) and falling is good (green).
+   Trust is the reverse: rising is good (green), falling is bad (red). */
+.delta-chip.exposure.up   .delta-num { color: var(--wax-red); }
+.delta-chip.exposure.down .delta-num { color: var(--moss); }
+.delta-chip.trust.up      .delta-num { color: var(--moss); }
+.delta-chip.trust.down    .delta-num { color: var(--wax-red); }
 .delta-chip.exposure { background: #f4dccd; }
 .delta-chip.trust    { background: #dde6d2; }
 
