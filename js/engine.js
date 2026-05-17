@@ -133,7 +133,19 @@
   function applyEffects(eff) {
     if (!eff) return;
     if (typeof eff.exposure === 'number') {
+      const before = state.exposure;
       state.exposure = clamp(state.exposure + eff.exposure, 0, 100);
+      // Track whether the player has ever drawn meaningful Customs
+      // suspicion. We use this to gate the "exposure-falls-to-zero"
+      // arrest path so that a player who has *never* been visible
+      // doesn't trip the threshold from the starting state.
+      if (state.exposure >= 20) state.flags.exposureSeen = true;
+      // Also flag the act of *aggressively suppressing* exposure —
+      // the Customs notice not the smuggler with nothing to hide
+      // but the smuggler hiding *too well*.
+      if (state.exposure < before) {
+        state.flags.exposureSuppressed = (state.flags.exposureSuppressed || 0) + (before - state.exposure);
+      }
     }
     if (typeof eff.trust === 'number') {
       state.trust = clamp(state.trust + eff.trust, 0, 100);
@@ -277,13 +289,26 @@
   }
 
   // -------- Threshold interrupts --------
-  // Trust threshold raised to 15: a smuggler with very little standing
-  // among his confederates is in real danger of being sold by them
-  // before he can sell anyone himself.
+  // Three automatic routes:
+  //   * Exposure ≥ 100 → an information is laid in the Exchequer. The
+  //     player is now offered the full Customs-pursuit sequence.
+  //   * Trust ≤ 15    → confederates sell the player to save themselves.
+  //   * Exposure ≤ 0 *after* having risen above 20 → the Customs notice
+  //     the smuggler who is hiding too well. Smugglers who methodically
+  //     suppressed all trace of themselves (heavy bribery, false manifests,
+  //     reconnoitring officers) drew Customs scrutiny precisely *because*
+  //     they were so invisible. Riding officers were dispatched to bring
+  //     them in for examination.
   function checkThresholds() {
-    if (state.exposure >= 100 && !state.flags.indictedAuto) {
-      state.flags.indictedAuto = true;
-      return 'auto_indicted';
+    if (state.exposure >= 100 && !state.flags.customsPursuit) {
+      state.flags.customsPursuit = true;
+      return 'auto_customs_pursuit';
+    }
+    if (state.exposure <= 0 && state.flags.exposureSeen && !state.flags.customsPursuit
+        && (state.flags.exposureSuppressed || 0) >= 18) {
+      state.flags.customsPursuit = true;
+      state.flags.suppressionPursuit = true;
+      return 'auto_customs_pursuit';
     }
     if (state.trust <= 15 && !state.flags.betrayedAuto) {
       state.flags.betrayedAuto = true;
@@ -357,9 +382,12 @@
     void el.sceneScroll.offsetWidth;
     el.sceneScroll.classList.add('scene-fade');
 
-    // Audio: ambient by act, scene cue, ending sting
+    // Audio: ambient by act, then per-scene override (if any), then UI cue
     Audio.setAct(scene.act);
-    Audio.sfx('scene');
+    Audio.applyScene(scene);
+    // The default ui_scene cue is only played if the scene didn't supply
+    // its own one-shot sfx (so we don't double up).
+    if (!scene.sfx) Audio.sfx('scene');
 
     if (scene.ending) {
       Audio.sfx('ending');
@@ -387,7 +415,9 @@
   // -------- Map overlay --------
   function showMap() {
     el.overlay.removeAttribute('hidden');
-    el.overlay.querySelector('.overlay-card').classList.remove('ending-card');
+    const card = el.overlay.querySelector('.overlay-card');
+    card.classList.remove('ending-card');
+    card.classList.add('map-card');
     el.overlayTitle.textContent = 'A Chart of the Channel';
     el.overlayBody.innerHTML =
       '<div class="map-overlay"><img src="assets/images/map.jpg" alt="A new chart of the English Channel and adjacent coasts" /></div>' +
@@ -398,7 +428,9 @@
   // -------- Ending overlay --------
   function showEnding(scene) {
     el.overlay.removeAttribute('hidden');
-    el.overlay.querySelector('.overlay-card').classList.add('ending-card');
+    const card = el.overlay.querySelector('.overlay-card');
+    card.classList.add('ending-card');
+    card.classList.remove('map-card');
     el.overlayTitle.textContent = withName(scene.endingTitle || 'An Ending');
     el.overlayBody.innerHTML =
       '<div class="ending-flag">' + escapeHtml(withName(scene.endingFlag || 'FINIS')) + '</div>' +
@@ -410,7 +442,9 @@
   // -------- About overlay --------
   function showAbout() {
     el.overlay.removeAttribute('hidden');
-    el.overlay.querySelector('.overlay-card').classList.remove('ending-card');
+    const card = el.overlay.querySelector('.overlay-card');
+    card.classList.remove('ending-card');
+    card.classList.remove('map-card');
     el.overlayTitle.textContent = 'A Note from the Author';
     el.overlayBody.innerHTML = (CONTENT.config && CONTENT.config.aboutHtml) || '<p>—</p>';
   }
@@ -432,10 +466,23 @@
   }
 
   // -------- Audio module --------
+  // The engine supports THREE layers of audio:
+  //   1. Per-act ambient (long looping bed, per Act number).
+  //   2. Per-scene ambient  — if a scene defines `audio: 'path.mp3'`
+  //      or `audio: { ambient: 'path.mp3', volume: 0.25 }`, it OVERRIDES
+  //      the act ambient for that scene. Leaving the scene returns to
+  //      the act ambient. This lets you score individual scenes (a
+  //      court clerk's pen, a stable yard at three in the morning, etc.).
+  //   3. One-shot UI cues (choice / scene / ending).
+  // Per-scene SFX may also be specified as `sfx: 'path.mp3'`, played
+  // when the scene loads instead of (or in addition to) the default
+  // ui_scene cue.
   const Audio = {
     muted: false,
     ambient: null,
     currentAct: null,
+    currentSceneAudio: null,
+    sceneAmbient: null,
     sfxBuffers: {},
     primed: false,    // browsers block autoplay until first user gesture
 
@@ -444,6 +491,8 @@
     },
     setAct(actNum) {
       if (!this.primed) return;            // wait for first interaction
+      // If a scene-specific ambient is playing, don't restart the act ambient
+      // just yet — `applyScene` decides how the two layers interact.
       if (this.currentAct === actNum) return;
       const path = (this.cfg().ambient || {})[actNum];
       this.currentAct = actNum;
@@ -453,8 +502,65 @@
       a.loop = true;
       a.volume = 0.22;
       a.muted = this.muted;
-      a.play().catch(() => {});            // ignore policy rejections
+      // If a scene-specific bed is currently playing, keep the act
+      // ambient prepared but silent (we'll un-mute it when we leave
+      // the scene). Otherwise, play it.
+      if (this.sceneAmbient) {
+        a.muted = true;
+      } else {
+        a.play().catch(() => {});
+      }
       this.ambient = a;
+    },
+    // Per-scene ambient: takes a path or an object {ambient, volume, loop}.
+    applyScene(scene) {
+      if (!this.primed) return;
+      const raw = scene && scene.audio;
+      const cfg = (typeof raw === 'string') ? { ambient: raw } : (raw || null);
+      const newPath = cfg && cfg.ambient ? cfg.ambient : null;
+
+      if (newPath) {
+        // Same scene-specific track already playing? do nothing.
+        if (this.currentSceneAudio === newPath && this.sceneAmbient) return;
+
+        // Stop any previous scene-ambient.
+        if (this.sceneAmbient) { try { this.sceneAmbient.pause(); } catch (e) {} }
+
+        // Mute the act ambient while the scene track plays.
+        if (this.ambient) { try { this.ambient.muted = true; } catch (e) {} }
+
+        const a = new window.Audio(newPath);
+        a.loop = (cfg.loop !== false);
+        a.volume = (typeof cfg.volume === 'number') ? cfg.volume : 0.26;
+        a.muted = this.muted;
+        a.play().catch(() => {});
+        this.sceneAmbient = a;
+        this.currentSceneAudio = newPath;
+      } else {
+        // No scene-specific audio: stop any prior scene ambient, restore
+        // the act ambient.
+        if (this.sceneAmbient) {
+          try { this.sceneAmbient.pause(); } catch (e) {}
+          this.sceneAmbient = null;
+          this.currentSceneAudio = null;
+        }
+        if (this.ambient) {
+          try {
+            this.ambient.muted = this.muted;
+            if (this.ambient.paused) this.ambient.play().catch(() => {});
+          } catch (e) {}
+        }
+      }
+
+      // Optional scene-specific one-shot
+      if (scene && scene.sfx) {
+        try {
+          const s = new window.Audio(scene.sfx);
+          s.volume = 0.45;
+          s.muted = this.muted;
+          s.play().catch(() => {});
+        } catch (e) {}
+      }
     },
     sfx(name) {
       if (this.muted || !this.primed) return;
@@ -469,13 +575,15 @@
       if (this.primed) return;
       this.primed = true;
       // re-trigger ambient for the current act now that autoplay is allowed
-      const act = (CONTENT.scenes[state.currentScene] || {}).act;
+      const scene = CONTENT.scenes[state.currentScene] || {};
       this.currentAct = null;
-      if (act) this.setAct(act);
+      if (scene.act) this.setAct(scene.act);
+      this.applyScene(scene);
     },
     toggleMute() {
       this.muted = !this.muted;
       if (this.ambient) this.ambient.muted = this.muted;
+      if (this.sceneAmbient) this.sceneAmbient.muted = this.muted;
       el.btnMute.textContent = this.muted ? 'Unmute' : 'Mute';
       flashFootnote(this.muted ? 'Audio muted.' : 'Audio on.');
     }
