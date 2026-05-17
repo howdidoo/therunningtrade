@@ -37,7 +37,7 @@ const CONTENT = {
   /* --------------------- CONFIG --------------------- */
   config: {
     title: 'THE RUNNING TRADE',
-    subtitle: "A Smuggler's Reckoning &mdash; Anno Dom. 1725",
+    subtitle: "A Smuggler's Reckoning &mdash; Anno Dom. 1725 *BETA*",
     startSceneId: '1.1_wake',
     fallbackImage: 'assets/images/map.jpg',
 
@@ -239,7 +239,7 @@ const CONTENT = {
       caption: 'Poole quay — the chief out-port of Dorset, much given to the running trade.',
       audio: 'assets/audio/scene_1_4_quay.mp3',  // hawkers, cordage, harbour bells
       body: [
-        'The eighteenth-century writer Daniel Defoe, who passed through this town not three years since, called Poole *"a considerable seaport... here weer a good number of ships fitted out every year to the Newfoundland fishing."* He did not write what every Pooleman knows: that more brandy comes ashore here in a fortnight than the Customs see in a twelvemonth.',
+        'The eighteenth-century writer Daniel Defoe, who passed through this town not three years since, called Poole *"a considerable seaport... here were a good number of ships fitted out every year to the Newfoundland fishing."* He did not write what every Pooleman knows: that more brandy comes ashore here in a fortnight than the Customs see in a twelvemonth.',
         'You walk the lanes between the chandlers and the rope-walks. A *tide-waiter* in the service of the Customs in his blue coat passes without a glance — he is paid by the day to watch a tide that brings him nothing. Beyond him, the Custom House keeps its prim pediment turned to the sea.',
         'A sloop is taking her last casks aboard at the inner basin. Her name, in green paint upon the transom, is *Dolphin*.'
       ],
