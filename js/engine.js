@@ -9,8 +9,46 @@
      • {{name}} substitution everywhere body / dialogue text is shown
      • A "Reflection" interstitial after any choice that changes
        Trust or Exposure — the teaching moment for students
-     • Per-act ambient audio + UI cues + mute toggle
+     • Per-act ambient audio, per-scene ambient override, UI cues
+     • Customs-protection flag suppresses auto thresholds once the
+       player is under Crown protection (sworn / King\'s evidence)
      • No localStorage; no save/load. Restart returns to the intro.
+   ------------------------------------------------------------
+   VERSION HISTORY
+
+   v1.4 (2026-05-17)
+     • Logic fix: turning King\'s evidence now sets
+       `customsProtected`, which suppresses both auto-thresholds
+       (auto_customs_pursuit and auto_betrayed). A protected witness
+       cannot be re-pursued by the Customs nor murdered in a stable
+       yard by the gang under the ordinary auto-trigger.
+     • New evidence-aftermath sequence (4.4 → 4.5 → 4.6) with a
+       weighted random roll: Trust + Purse + die. Result splits
+       between `4.6_evidence_safe` (witness preserved in a Norfolk
+       parish) and `4.6_evidence_kidnap` (gang reprisal at Petworth).
+     • Joining the Customs (5.7) now also sets `customsProtected`.
+     • Version block surfaced in the About dialogue.
+
+   v1.3 (2026-05-17)
+     • Per-scene ambient audio (engine `Audio.applyScene`); scenes
+       may set `audio:` to override the act ambient, and `sfx:`
+       to play a one-shot on scene load.
+     • Map images enlarged in the sailing modal and in the chart
+       overlay (.map-card); chart now uses `object-fit: contain`.
+
+   v1.2 (2026-05-17)
+     • Act V deepened: revenge arc (5.6.*), Customs alliance arc
+       (5.7.*), Jacobite heroic arc (5.8.*), plus a five-scene
+       Customs pursuit & arrest sequence under `auto_customs_pursuit`.
+     • New threshold: Exposure ≤ 0 after methodical suppression
+       routes into the Customs pursuit sequence ("hiding too well").
+
+   v1.1
+     • Sailing modal with wind, tide, glass; chart of the Channel.
+
+   v1.0
+     • First public version. Five-act structure, two meters,
+       Reflection card.
    ============================================================ */
 
 (function () {
@@ -291,15 +329,25 @@
   // -------- Threshold interrupts --------
   // Three automatic routes:
   //   * Exposure ≥ 100 → an information is laid in the Exchequer. The
-  //     player is now offered the full Customs-pursuit sequence.
+  //     player is offered the full Customs-pursuit sequence.
   //   * Trust ≤ 15    → confederates sell the player to save themselves.
   //   * Exposure ≤ 0 *after* having risen above 20 → the Customs notice
-  //     the smuggler who is hiding too well. Smugglers who methodically
-  //     suppressed all trace of themselves (heavy bribery, false manifests,
-  //     reconnoitring officers) drew Customs scrutiny precisely *because*
-  //     they were so invisible. Riding officers were dispatched to bring
-  //     them in for examination.
+  //     the smuggler who is hiding too well. Riding officers are
+  //     dispatched to bring him in for examination.
+  //
+  // PROTECTION FLAG (`customsProtected`)
+  // Set when the player has thrown in his lot with the Crown — either
+  // by turning King's evidence (4.3_inform) or by enlisting in the
+  // Customs service (5.7_customs_alliance). Once protected:
+  //   * auto_customs_pursuit is suppressed — His Majesty's officers
+  //     do not arrest their own witness or their own officer.
+  //   * auto_betrayed is suppressed — the gang's reach is broken
+  //     for ordinary purposes once the player is in Crown custody.
+  //     (The dedicated evidence-turned ending sequence handles the
+  //      separate risk of a gang reprisal, with its own roll.)
   function checkThresholds() {
+    if (state.flags.customsProtected) return null;
+
     if (state.exposure >= 100 && !state.flags.customsPursuit) {
       state.flags.customsPursuit = true;
       return 'auto_customs_pursuit';

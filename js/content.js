@@ -99,6 +99,14 @@ const CONTENT = {
       <strong>Trust</strong> is your standing with your confederates; if it drops to
       zero, they will betray you. </p>
       <p> The game was coded using Claude Code and the images generated using DALL-E 2, with prompts based on period descriptions and paintings, and a slightly retro, bitmapped aesthetic. </p>
+
+      <hr style="border:none;border-top:1px dashed var(--ink-soft);margin:14px 0;" />
+
+      <h4 style="font-family:var(--font-sc);font-size:16px;color:var(--wax-red);margin:6px 0 6px;">Version History</h4>
+      <p style="font-family:var(--font-sc);font-size:14px;color:var(--ink-soft);margin:0 0 4px;">Current version: <strong>0.5 BETA</strong> (17 May 2026).</p>
+      <ul style="margin:4px 0 4px 18px;font-size:15px;line-height:1.45;">
+        <li><strong>v.5 BETA</strong> &mdash; First Beta version. Five acts, two meters, Reflection card.</li>
+      </ul>
     `
   },
 
@@ -836,14 +844,158 @@ const CONTENT = {
         { dlg: 'The Solicitor', text: 'Mr. {{name}}, your information will be received. The terms are these. You will be sworn; you will give evidence against David Boyse, John Hatch, John Sellers, and their confederates upon all the matters within your knowledge. In return, His Majesty will be graciously pleased to issue a pardon for your part in the same matters.' },
         'You sign your name, and another, and another. A clerk fetches you bread and small beer. You receive a *King\'s pardon, sworn,* upon condition.'
       ],
-      onEnter: (s) => { s.flags.turnedKingsEvidence = true; },
+      onEnter: (s) => { s.flags.turnedKingsEvidence = true; s.flags.customsProtected = true; },
       choices: [
         { text: 'On to Portsea. The Customs will move on Boyse\'s house at dawn.',
-          target: '5.1_face_boyse',
+          target: '4.4_boyse_taken',
           effects: { addItem: 'pardon', exposure: -20, trust: -10 },
           lesson: 'A sworn pardon eliminated nearly all your legal exposure but cost you every confederate at once. In the historical case, the clerk Pulsom\'s evidence broke the Boyse syndicate, but Pulsom himself was thereafter a man without a country — informers were, in Defoe\'s phrase, "the best paid and least loved of all His Majesty\'s servants".'
         }
       ]
+    },
+
+    /* ============================================================
+       EVIDENCE-TURNED AFTERMATH
+       ------------------------------------------------------------
+       Once the player has sworn to the King\'s evidence, two things
+       follow without further choice on his part:
+         (1) Boyse and his confederates are taken upon the warrant
+             prepared from the player\'s deposition; and
+         (2) the gang — what remains of it — gathers itself for a
+             reprisal. Whether that reprisal finds its man is a
+             matter of luck, of the player\'s wealth, and of the
+             vigilance of the Crown agents charged with his safety.
+             It is settled by a roll, weighted by the player\'s
+             accumulated standing (Trust) and resources (Purse).
+       The protection flag `customsProtected` is by now in force, so
+       no auto-threshold can divert the player off this track.
+       ============================================================ */
+
+    '4.4_boyse_taken': {
+      act: 4,
+      title: 'Portsea, Before Dawn — A House Surrounded',
+      image: 'assets/images/act5_betray.jpg',
+      caption: 'Twenty constables and a serjeant of dragoons in the lane behind the High.',
+      audio: 'assets/audio/scene_4_4_arrest.mp3', // hobnails on cobbles, a knock, a calling-out
+      body: [
+        'The Solicitor moves with the dispatch of a man who has waited some months for this morning. Before the bells of St. Thomas have rung six, *David Boyse* is taken in his own bedchamber, with the warrant of attachment read out at the foot of the bed in the presence of Mrs. Boyse, who does not weep. *John Hatch* is taken at the same hour in his lodgings at Gosport. *John Sellers*, forewarned by no one knows whom, is already past the Solent in a wherry, and will not be seen in England again.',
+        'You are not present at the taking. You watch from a closed coach in Portsea Common, in the keeping of a *Mr. Yarrow*, attorney to the Solicitor, who has been instructed not to lose sight of you for any cause whatever. He pours a glass of small beer from a flask and hands it to you without comment.',
+        { dlg: 'Mr. Yarrow', text: 'Mr. {{name}}, it falls to me to say what the Solicitor has not the leisure to. You are now, sir, a person of *considerable danger to certain other persons*, and of *considerable interest* to His Majesty\'s officers. We shall convey you presently into the country under another name. Whether the certain other persons find you there before the Crown can hide you — that, sir, is between you, your purse, and your providence.' }
+      ],
+      onEnter: (s) => { s.flags.boyseArrested = true; },
+      choices: [
+        { text: 'Set out at once for the safe-house, by the back roads.',
+          target: '4.5_evidence_roll',
+          effects: { exposure: -10 },
+          lesson: 'The Crown\'s practical protection of its principal informers was rudimentary but real: change of name, transit by night, lodging in a private house under the supervision of a Customs attorney. In the historical case, Isaac Poulsum was conducted from London to a private address in Stepney and thence (records suggest) to a parish in Surrey.'
+        },
+        { text: 'Spend the day in Portsmouth first, settle small debts, and travel by stage at evening.',
+          target: '4.5_evidence_roll',
+          effects: { exposure: +6 },
+          lesson: 'An informer who took his leisure in his own port — even to close honest business — gave the gang a window in which to act. The 1733 Report records two informers (Wickham and Trim) who delayed their removal for "small affairs" and were taken by their old confederates within the week.'
+        }
+      ]
+    },
+
+    /* The roll. Result depends on three inputs:
+         * trust  — paradoxically, the smuggler with high trust has
+                    more friends *outside* the gang willing to shelter
+                    him; the smuggler with low trust has none.
+         * purse  — coin buys silence on the post-roads.
+         * a die  — providence, which the Customs do not survey.
+       Cumulative score ≥ 50 → safe ending; otherwise kidnap. */
+
+    '4.5_evidence_roll': {
+      act: 4,
+      title: 'A Coach Out of Portsmouth, by Stages',
+      image: 'assets/images/act4_flight.jpg',
+      caption: 'Five and forty miles to the next safe roof, and providence between.',
+      audio: 'assets/audio/scene_4_5_coach.mp3', // wheel on chalk, harness, the wind in elms
+      body: [
+        'The coach leaves Portsmouth at the candle-end. You are conducted as far as Petersfield by Mr. Yarrow, who there delivers you into the hands of a Mr. Page (riding officer of the eastern district, lately reassigned to private duties on the Solicitor\'s order). Page is a sober man, civil, and very alert. He carries a brace of pistols and the address of a parsonage at Mayfield.',
+        'You are now on the road, with the night closing in, and somewhere behind you the remnants of a syndicate that has lost everything and has only one piece of business left to settle.'
+      ],
+      onEnter: (s) => {
+        // Settle the roll once; subsequent re-entries return the same outcome.
+        if (typeof s.flags.evidenceRoll === 'undefined') {
+          const trustScore = Math.max(0, Math.min(40, s.trust * 0.6));
+          const purseScore = s.items && s.items.indexOf('purse') >= 0 ? 15 : 0;
+          const die        = Math.floor(Math.random() * 40);
+          s.flags.evidenceRoll = Math.round(trustScore + purseScore + die);
+        }
+      },
+      choices: [
+        { text: 'See what providence has set for you on the road.',
+          target: (s) => ((s.flags.evidenceRoll || 0) >= 50 ? '4.6_evidence_safe' : '4.6_evidence_kidnap')
+        }
+      ]
+    },
+
+    '4.6_evidence_safe': {
+      act: 4,
+      title: 'A Parsonage at Mayfield — Three Months Later',
+      image: 'assets/images/act5_honest.jpg',
+      caption: 'A small upper room, a window of leaded glass, no name upon the door.',
+      audio: 'assets/audio/scene_4_6_parsonage.mp3', // a coal fire, a slow clock, distant rooks
+      body: [
+        'You are lodged, by the Solicitor\'s contrivance, in the upper room of a parsonage at Mayfield, in the Sussex weald. Your name has been altered upon the parish register; your face is altered, by a winter beard, more thoroughly than the register. The rector, a man of quiet sympathies and considerable curiosity, asks no question that does not concern the weather.',
+        'In March of 1726 you are conveyed, by another stage, to a small farm at *Stiffkey* in the county of Norfolk, where you are to live out your days as a Mr. Hollings, late of the Bristol coasting trade. You take a wife in 1729 and bury her in 1741. Three of your four children survive you. None of them ever hears the name *Boyse* under any roof of yours.',
+        'In 1733 a small book reaches you by the post — *The Report of the Committee Appointed to Inquire into the Frauds and Abuses in the Customs*. You read in it the names of every man you ever sailed with. Your own name is not in it. The Solicitor\'s discretion has been complete.',
+        'Boyse, you read, died in the Fleet in 1740; Hatch in the same prison in 1732; Cooper at sea, of fever, off Antigua, in 1731. Pulsom married a widow in Stepney and kept a small chandlery. Of yourself the *Report* says nothing whatever.'
+      ],
+      ending: true,
+      endingTitle: 'An Ending — A Quiet Norfolk Name',
+      endingFlag: 'FINIS — THE WITNESS PRESERVED',
+      endingHtml: `
+        <p>The Crown protected its principal informers when it could, and to a
+        degree that surprised contemporaries. The 1733 <em>Report</em> records
+        that the Solicitor for the Customs maintained "houses of safety" at
+        Stiffkey, at Mayfield, and at three further addresses not specified
+        in the printed evidence; informers in fear of their lives were
+        conducted to these houses, given altered names, and allowed to settle
+        in country parishes far from the south coast.</p>
+        <p>The historical clerk <strong>Isaac Poulsum</strong> survived his
+        evidence, married, kept a chandlery in Stepney, and lived to see the
+        printed <em>Report</em> of 1733 in which his name appears only as a
+        deponent and not as a defendant. Whether he was "made through safe"
+        by Crown protection or by sheer providence is a question the records
+        do not answer.</p>
+      `
+    },
+
+    '4.6_evidence_kidnap': {
+      act: 4,
+      title: 'A Coaching Inn at Petworth, by Lantern-Light',
+      image: 'assets/images/act4_betrayed.jpg',
+      caption: 'Mr. Page does not return from the stable; the lantern is brought by another hand.',
+      audio: 'assets/audio/scene_4_6_kidnap.mp3', // a stable lantern, a horse blowing, no voices
+      body: [
+        'The coach changes horses at Petworth at half past nine. Mr. Page steps down to see to the harness. He does not return. A lantern presently is held up at the coach window by a man you have never seen, and a voice says, in a level Hampshire accent, *Mr. {{name}}, sir, will you alight*.',
+        'You alight. There are three men. The fourth (you understand later) is Mr. Page, lying behind the stable with a quiet wound and no breath. The pistols are taken from his belt and from yours. You are walked, very civilly, into the inn-yard and through a side gate into a green lane, and along the lane to a small wood, where there is a horse waiting and a length of rope.',
+        'You do not see any face you recognise. They speak very little. One of them tells you, almost kindly, that Mr. Boyse sends his particular regards from the King\'s Bench prison, and that the matter is not personal but professional. *They go quite slowly. They are not in any hurry.*',
+        'In the morning, a labourer crossing the wood finds you, and the Solicitor for the Customs writes a careful letter to the Commissioners which is not, in its substance, made public.'
+      ],
+      ending: true,
+      endingTitle: 'An Ending — The Gang\'s Last Errand',
+      endingFlag: 'FINIS — THE INFORMER\'S WAGE',
+      endingHtml: `
+        <p>Informers were murdered, in this period, often enough that the Crown
+        regarded the protection of evidence as a serious operational problem.
+        The most famous case is that of Daniel Chater and William Galley
+        (1748), murdered by the Hawkhurst gang while in the custody of Customs
+        officers en route to give evidence. Their deaths produced the
+        <em>Act for the more effectual punishing such persons as shall
+        wilfully and maliciously destroy ships, &amp;c.</em> (22 Geo. II
+        c. 46) and a substantial intensification of enforcement.</p>
+        <p>Even in 1725 the danger to a Crown witness was understood. The
+        <em>Report</em> of 1733 lists, in an appendix, eight informers
+        "destroyed or vanished" since 1718 — about a quarter, by the
+        Solicitor\'s own count, of the principal witnesses he had committed
+        to protection.</p>
+        <p>Your ending follows the documented fate of one such witness,
+        unnamed in the printed <em>Report</em> but referred to in the
+        Solicitor\'s private letters as "the Portsmouth clerk".</p>
+      `
     },
 
     /* ====== ACT V ====== */
@@ -1211,7 +1363,7 @@ const CONTENT = {
         { html: '<p style="font-style:italic;color:var(--ink-soft);padding:8px 12px;border-left:3px solid var(--wax-red);margin:8px 0;">I, {{name}}, do swear that I will faithfully and diligently execute the office of <strong>Surveyor of the Coasts</strong> committed unto me, that I will discover all frauds against the duties of His Majesty\'s Customs that shall come to my knowledge, and that I will neither take, nor cause to be taken, any consideration, gift, or reward, for the breach of His Majesty\'s laws. So help me God.</p>' },
         'You sign. The Solicitor counter-signs. You are paid a half-quarter\'s salary in advance, in coin, and given a *staff of office* tipped in iron and a letter to the Collector at Portsmouth instructing him to receive you upon his establishment.'
       ],
-      onEnter: (s) => { s.flags.sworn = true; },
+      onEnter: (s) => { s.flags.sworn = true; s.flags.customsProtected = true; },
       choices: [
         { text: 'Return to the south coast as a sworn officer.',
           target: '5.7b_customs_sting',
@@ -1230,7 +1382,7 @@ const CONTENT = {
         { dlg: 'The Solicitor', text: 'As you wish, sir. You shall be no officer, but a *private informer* upon a private agreement. The Crown\'s bounty will be in proportion to the goods condemned. The Crown\'s protection extends so far as the bounty, and not, I am bound to say, an inch farther.' },
         'You receive £50 in advance and the address of a Mr. Yarrow, an attorney near Lincoln\'s Inn, through whom your communications shall pass. Your name is written, by another hand, in a book that no smuggler will ever see.'
       ],
-      onEnter: (s) => { s.flags.informerOnly = true; },
+      onEnter: (s) => { s.flags.informerOnly = true; s.flags.customsProtected = true; },
       choices: [
         { text: 'Return to the south coast.',
           target: '5.7b_customs_sting',
