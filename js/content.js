@@ -85,6 +85,7 @@ const CONTENT = {
       <strong>David Boyse</strong>, a Portsmouth wine merchant who, with his partners
       John Hatch and John Sellers, ran a substantial cross-Channel smuggling syndicate
       until their clerk Isaac Poulsum turned King's evidence.</p>
+      <p>The goal of the game is to learn about the dynamics of eighteenth-century smuggling and its underworld.</p>
       <p>The mechanics &mdash; debenture frauds, "running" cargoes by moonlight,
       under-declarations, bribery of land-waiters, riding officers patrolling the coast,
       informations <em>ad rem</em> and <em>ad personam</em> in the Court of Exchequer
@@ -96,7 +97,8 @@ const CONTENT = {
       <p>Two meters track the player's situation. <strong>Exposure</strong> rises
       as the Customs come to suspect you; if it reaches 100, prosecution follows.
       <strong>Trust</strong> is your standing with your confederates; if it drops to
-      zero, they will betray you. The goal of the game is to learn about the dynamics of eighteenth-century smuggling and its underworld.</p>
+      zero, they will betray you. </p>
+      <p> The game was coded using Claude Code and the images generated using DALL-E 2, with prompts based on period descriptions and paintings, and a slightly retro, bitmapped aesthetic. </p>
     `
   },
 
