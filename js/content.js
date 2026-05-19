@@ -37,7 +37,7 @@ const CONTENT = {
   /* --------------------- CONFIG --------------------- */
   config: {
     title: 'THE RUNNING TRADE',
-    subtitle: "A Smuggler's Reckoning &mdash; Anno Dom. 1725 *BETA*",
+    subtitle: "A Smuggler's Reckoning — Anno Dom. 1725 *BETA*",
     startSceneId: '1.1_wake',
     fallbackImage: 'assets/images/map.jpg',
 
@@ -68,11 +68,11 @@ const CONTENT = {
     /* ----- Introduction screen ----- */
     intro: {
       title: 'THE RUNNING TRADE',
-      subtitle: "A Smuggler's Reckoning &mdash; Anno Dom. 1725",
+      subtitle: "A Smuggler's Reckoning — Anno Dom. 1725",
       body: [
         'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high; the temptation to evade them is higher. Whole communities along the southern coast of England live by what contemporaries call **the running trade**.',
         'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period. Their organization was real, and so was their fate.',
-        { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> &mdash; how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> &mdash; your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
+        { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> — how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> &mdash; your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
         'Every choice that moves a meter will be followed by a brief *Reflection* — the historical reasoning behind the consequence.',
         
       ],
@@ -289,8 +289,8 @@ const CONTENT = {
       caption: 'A sloop of forty tons, rigged for the Channel.',
       body: [
         'A man with hands like split firewood is making fast a coil of rope. He glances up; his face does not change.',
-        { dlg: 'Tom Cooper, master', text: 'Mr. {{name}}, you are late, and uglier than yesterday, but you are aboard. Mr. Boyse sends his particular regards. He says the freight is debentured to Dunkirk &mdash; ' },
-        { dlg: 'Tom Cooper, master', text: ' &mdash; though we may find the wind sets rather toward St Helier in the Channel Islands of an evening. Do you take my meaning?' },
+        { dlg: 'Tom Cooper, master', text: ' you are late, and uglier than yesterday, but you are aboard. Mr. Boyse sends his particular regards. He says the freight is debentured to Dunkirk &mdash; ' },
+        { dlg: 'Tom Cooper, master', text: ' though we may find the wind sets rather toward St Helier in the Channel Islands of an evening. Do you take my meaning?' },
         'You take his meaning. The cargo is *tobacco* &mdash; declared for export, the duty drawn back, and shortly to be landed again upon some quiet beach in *Jersey* and shipped home as if it had never been British. This was an old and common fraud.'
       ],
       choices: [
@@ -343,7 +343,7 @@ const CONTENT = {
         'You have hours before St Helier on the Isle of Jersey. There are matters to consider.'
       ],
       choices: [
-        { text: 'Help Ned set up the running gear &mdash; show willing.',
+        { text: 'Help Ned set up the running gear; show willing.',
           target: '1.7_jersey_arrival',
           effects: { trust: +5 },
           lesson: 'The smuggling sloop ran on the cooperation of every hand. Master and clerk who declined the rough work were resented, then suspected. Sharing labour was an investment in your shipmates\' loyalty.'
@@ -366,7 +366,7 @@ const CONTENT = {
       image: 'assets/images/act1_channel.jpg',
       caption: 'A book of names that no man should be holding upon a moonless deck.',
       body: [
-        'The pages of the ledger provides the real accounting of the goods. Merchants and smugglers might keep two books: one submitted to officials and a record of frauds, and the other the real account. Names &mdash; **Boyse**, **Hatch**, **Sellers** &mdash; and against them, sums that grow over years. A clerk\'s hand, careful in some places and shaking in others. The shaking entries are recent.',
+        'The pages of the ledger provides the real accounting of the goods. Merchants and smugglers might keep two books: one submitted to officials and a record of frauds, and the other the real account. Names — **Boyse**, **Hatch**, **Sellers** — and against them, sums that grow over years. A clerk\'s hand, careful in some places and shaking in others. The shaking entries are recent.',
         'One name appears in a heavier ink than the rest, and underlined: *Isaac Pulsom*. He is the keeper of this book, then; or was. You wonder if he is still living. But it is clear now whom you work for: a smuggling syndicate led by David Boyse and his partners Hatch and Sellers'
       ],
       onEnter: (s) => { s.flags.knowsPulsom = true; },
@@ -560,7 +560,7 @@ const CONTENT = {
           effects: { exposure: +12, trust: +6, flags: { officerHurt: true } },
           lesson: 'Violence against riding officers was the line that turned smuggling into criminal felony. The 1736 *Smuggling Act* was passed in direct response to the rising count of officers beaten or shot on the south coast. Your gang loves boldness; the gallows in time will love it too.'
         },
-        { text: 'Slip away quietly with the cargo &mdash; let him write his report; deny everything.',
+        { text: 'Slip away quietly with the cargo — let him write his report; deny everything.',
           target: '2.6_aftermath',
           effects: { exposure: +6 },
           lesson: 'A riding officer\'s report on a "running cargo seen at Pevensey, persons unknown" went into the Collector\'s weekly return and fed, in time, the dossier kept by the Customs solicitors in London. Anonymity slowed the law; it did not stop it.'
@@ -586,7 +586,7 @@ const CONTENT = {
       ],
       onEnter: (s) => { s.flags.actTwoDone = true; },
       choices: [
-        { text: 'Northward, to London &mdash; the goods to be disposed of through Mr. Boyse\'s factor.',
+        { text: 'Northward, to London — the goods to be disposed of through Mr. Boyse\'s factor.',
           target: '3.1_summons',
           effects: { trust: +2 },
           lesson: 'Inland networks of farmers, carriers and London receivers turned smuggled goods into cash. Boyse\'s factor was a respectable wine-merchant in the City who paid in bills of exchange — no different in form from any merchant\'s account, except that it was illegal at every step.'
@@ -603,7 +603,7 @@ const CONTENT = {
       caption: 'A letter sealed in red wax, the impression a stag\'s head couped.',
       body: [
         'In London, between one tavern and another, you are handed a letter. It is from **David Boyse**, by his clerk Pulsom\'s hand:',
-        { dlg: 'Boyse, by his clerk', text: 'Mr. {{name}} &mdash; You are now sufficiently in our trust. There is a matter of three hundred chests of tea and forty pieces of Bordeaux to come into Poole upon the *Prosperity*, by ordinary course. The under-declaration is to be your particular charge. Mr. Reeve at the Custom House is our man. Mr. Henwood is not. The cocket is enclosed. &mdash; Boyse.' },
+        { dlg: 'Boyse, by his clerk', text: '{{name}} — You are now sufficiently in our trust. There is a matter of three hundred chests of tea and forty pieces of Bordeaux to come into Poole upon the *Prosperity*, by ordinary course. The under-declaration is to be your particular charge. Mr. Reeve at the Custom House is our man. Mr. Henwood is not. The cocket is enclosed. &mdash; Boyse.' },
         'This is the third species of fraud described in the *Report*: not running goods upon the beach, but landing them at the legal quay and *under-declaring* what is in the hold.'
       ],
       choices: [
@@ -622,7 +622,7 @@ const CONTENT = {
       },
       body: [
         'You meet the *Prosperity*, a Bordeaux trader, in the Channel south of the Needles. She carries (by her papers) only forty pieces of wine. In her hold are also the chests of tea, in a false bulkhead aft.',
-        'It falls to you to draw the manifest you will present at Poole &mdash; how much shall be declared, and how much hidden.'
+        'It falls to you to draw the manifest you will present at Poole — how much shall be declared, and how much hidden.'
       ],
       choices: [
         { text: 'Declare the wine in full, and hide all the tea.',
@@ -660,7 +660,7 @@ const CONTENT = {
           effects: { exposure: -2, trust: +2 },
           lesson: 'Trusting a corrupt officer was the smuggler\'s ordinary risk. Reeve\'s "consideration" was an unwritten contract — enforceable only by repetition and reputation. Boyse paid him for years on this footing; the system held until it didn\'t.'
         },
-        { text: 'Insist that Mr. Henwood attend also &mdash; appear above suspicion.',
+        { text: 'Insist that Mr. Henwood attend also — appear above suspicion.',
           target: '3.4_henwood',
           effects: { exposure: -8, trust: -8 },
           lesson: 'Inviting an honest officer into your business was a defensive posture — a fair-trader\'s gambit — that cleared you with the Customs but mortified the gang. The 1733 deposition recorded that Boyse "took it amiss" when his men volunteered for honest searches.'
@@ -684,7 +684,7 @@ const CONTENT = {
           requires: { item: 'purse' },
           lesson: 'Cash on the quay was the smuggler\'s best receipt: no paper, no debt, no leverage on either side. Boyse always insisted on it. The Customs solicitor in the 1725 prosecution noted ruefully that "no monies passed by note that we could trace".'
         },
-        { text: 'Promise him by note &mdash; through Mr. Boyse &mdash; in three days.',
+        { text: 'Promise him by note — through Mr. Boyse — in three days.',
           target: '3.5_after',
           effects: { exposure: +3, trust: +2 },
           lesson: 'A promised payment created a creditor — and a creditor was a witness. Reeve\'s memory of you and your business now had three days to ferment. In Pulsom\'s evidence, several officers turned informant precisely because their promised "considerations" had gone unpaid.'
@@ -712,7 +712,7 @@ const CONTENT = {
           effects: { exposure: -10, trust: -12, flags: { caughtPartial: true } },
           lesson: 'Voluntary submission converted a *criminal* matter into a *civil* one — a triple-value penalty for unpaid duty, recoverable as debt. Painful but survivable. The gang, however, treated such submissions as betrayal: every penalty paid by one man revealed the gang\'s tactics to the Customs solicitors.'
         },
-        { text: 'Offer him a private gift &mdash; ten guineas in his pocket.',
+        { text: 'Offer him a private gift — ten guineas in his pocket.',
           target: '3.4a_henwood_bribe',
           requires: { item: 'purse' }
         },
@@ -791,7 +791,7 @@ const CONTENT = {
       audio: 'assets/audio/scene_4_1_tavern_yard.mp3', // wind in elms, distant tavern fiddle
       body: [
         'On the road from Portsmouth Tom Cooper steps from a hedge as if grown there. He has the look of a man who has been waiting some hours and would rather be drinking.',
-        { dlg: 'Tom Cooper', text: 'Pulsom is turned. He has been four days closeted with the Solicitor for the Customs in London, and the Inspector of Prosecutions besides. There is to be an *information* laid &mdash; *ad personam* &mdash; against you, against me, against half the men of the Dolphin.' },
+        { dlg: 'Tom Cooper', text: 'Pulsom is turned. He has been four days closeted with the Solicitor for the Customs in London, and the Inspector of Prosecutions besides. There is to be an *information* laid *ad personam* against you, against me, against half the men of the Dolphin.' },
         { dlg: 'Tom Cooper', text: 'Mr. Boyse knows. He has known a fortnight. He sent for you to Portsea not for an account but to put you out of the way before you are taken. The same as he did to **Crouch** at the Crown Inn at Poole, the night before you woke without your memory.' },
         'You stand a long moment with no breath in you. You understand at last who you are, and what was done to you, and who did it. *Mr. {{name}} is a name David Boyse meant should never speak again.*'
       ],
@@ -805,7 +805,7 @@ const CONTENT = {
           effects: { trust: -4 },
           lesson: 'Flight was the smuggler\'s last option but a recognised one. The Channel Islands offered legal refuge — English warrants ran there only by special procedure and rarely — but flight signalled to the gang that you had broken faith, and confederates left behind would feel free to inform on a man who was no longer a danger to them.'
         },
-        { text: 'Turn the King\'s evidence yourself &mdash; before Pulsom\'s deposition can take effect.',
+        { text: 'Turn the King\'s evidence yourself — before Pulsom\'s deposition can take effect.',
           target: '4.3_inform',
           effects: { trust: -20, exposure: -10 },
           lesson: 'Pre-empting another informer was the cleverest of last resorts. The Crown rewarded the *first* deponent most generously: full pardon, often a cash bounty, and protection from prosecution. But turning King\'s evidence destroyed every relationship in the gang at once — and one of them, before nightfall, would try to kill you.'
@@ -821,7 +821,7 @@ const CONTENT = {
       body: [
         'You take a fishing lugger out of Christchurch with a man who asks you no questions because he asks no man any. You make St Helier in two days. Le Brun, the Jerseyman, takes you in.',
         'A letter follows, by another bottom, in a hand you know. It is from David Boyse.',
-        { dlg: 'David Boyse', text: 'Mr. {{name}}, you have run, sir. You have done well. Come to Portsea when the heat is off and we shall yet make a good thing of it. &mdash; B.' },
+        { dlg: 'David Boyse', text: '{{name}}, you have run, sir. You have done well. Come to Portsea when the heat is off and we shall yet make a good thing of it. — B.' },
         'You do not believe him. You know now what awaited Crouch at the Crown.'
       ],
       choices: [
@@ -840,7 +840,7 @@ const CONTENT = {
       caption: 'Stairs of stone, a long wait, a man with two pens.',
       audio: 'assets/audio/scene_4_3_london_customs.mp3', // rain on lead roof, distant bell
       body: [
-        'You walk into the Custom House upon the Thames and ask for the **Solicitor for Criminal Prosecutions** &mdash; an office created only this year, in the wake of the recent crimes. Pulsom is there before you. He is surprised to see you, and his surprise turns within a quarter of an hour to anger, and then to a kind of rueful nod.',
+        'You walk into the Custom House upon the Thames and ask for the **Solicitor for Criminal Prosecutions** — an office created only this year, in the wake of the recent crimes. Pulsom is there before you. He is surprised to see you, and his surprise turns within a quarter of an hour to anger, and then to a kind of rueful nod.',
         { dlg: 'The Solicitor', text: 'Mr. {{name}}, your information will be received. The terms are these. You will be sworn; you will give evidence against David Boyse, John Hatch, John Sellers, and their confederates upon all the matters within your knowledge. In return, His Majesty will be graciously pleased to issue a pardon for your part in the same matters.' },
         'You sign your name, and another, and another. A clerk fetches you bread and small beer. You receive a *King\'s pardon, sworn,* upon condition.'
       ],
@@ -1068,7 +1068,7 @@ const CONTENT = {
       caption: 'A garden of beans, a view of Old Harry, a small school for the parish boys.',
       body: [
         'You take a cottage in the Purbecks under another name. The work is poor and the bread is plain; the wind is loud at night. From the cliff you can see, on a clear day, the very offing in which the Dolphin used to lie waiting for her signal. You do not lie awake.',
-        'In 1733 a small printed book is brought into the village by a peddler &mdash; *The Report of the Committee Appointed to Inquire into the Frauds and Abuses in the Customs.* You read it from cover to cover by candle. Your name is not in it. Boyse\'s is. Hatch is dead in the Fleet. Sellers, you read, "is a fugitive, and supposed to be in Jersey".',
+        'In 1733 a small printed book is brought into the village by a peddler — *The Report of the Committee Appointed to Inquire into the Frauds and Abuses in the Customs.* You read it from cover to cover by candle. Your name is not in it. Boyse\'s is. Hatch is dead in the Fleet. Sellers, you read, "is a fugitive, and supposed to be in Jersey".',
         'You shut the book. There is bread to be made, and a Latin lesson to set for a boy who does not yet know how lucky he is.'
       ],
       ending: true,
@@ -1134,7 +1134,7 @@ const CONTENT = {
       image: 'assets/images/act5_fleet.jpg',
       caption: 'A debtor\'s gallery; a gaol-fever; a clerk crossing names from a list.',
       body: [
-        'You are saved from the Manacles only to be taken at Falmouth, three weeks later, by a constable acting upon Pulsom\'s information. The Court of Exchequer condemns you to the triple value of the cargo lost &mdash; £10,500 &mdash; which exceeds your estate, your bond, and any reasonable hope of payment.',
+        'You are saved from the Manacles only to be taken at Falmouth, three weeks later, by a constable acting upon Pulsom\'s information. The Court of Exchequer condemns you to the triple value of the cargo lost — £10,500 — which exceeds your estate, your bond, and any reasonable hope of payment.',
         'You are remanded first to Newgate, then to the Marshalsea, and at last to the Fleet, where John Hatch already lies. *The mousetrap had snapped shut.* You hear, in 1733, that a Committee of the House of Commons has begun an inquiry into your sort of business.',
         'You will not see its conclusion.'
       ],
@@ -1172,7 +1172,7 @@ const CONTENT = {
           effects: { trust: +4 },
           lesson: 'Smuggling masters resented their employers as often as they served them. Cooper has watched Boyse abandon men before — Crouch is only the most recent. To enlist him is to enlist the gang\'s practical knowledge against its head.'
         },
-        { text: 'Approach Pulsom in London &mdash; the clerk who has already turned &mdash; and offer him a private supplement.',
+        { text: 'Approach Pulsom in London — the clerk who has already turned — and offer him a private supplement.',
           target: '5.6a_revenge_pulsom',
           effects: { trust: -4, exposure: -4 },
           lesson: 'The historical clerk Isaac Poulsum was already feeding evidence to the Customs Solicitor in 1725. A man who has chosen to inform can usually be persuaded to inform *more* — but the cost is your own further exposure to the same papers and depositions.'
@@ -1219,7 +1219,7 @@ const CONTENT = {
       audio: 'assets/audio/scene_5_6_letter.mp3',  // pen on paper, a fire whisper, no voices
       body: [
         'You send word to Pulsom by a private hand at Salisbury. The clerk, frightened still but no longer surprised at any quarter from which danger comes, writes back within the week:',
-        { dlg: 'Isaac Pulsom, by his own hand', text: 'Mr. {{name}} &mdash; The Solicitor in London takes my information slowly, sir, slowly. He wants the *Cherbourg* receipts, which Mr. Boyse keeps in a locked drawer of his counting house at Portsea. If those came into my custody, sir, the Solicitor would press the prosecution within a fortnight.' },
+        { dlg: 'Isaac Pulsom, by his own hand', text: '{{name}} — The Solicitor in London takes my information slowly, sir, slowly. He wants the *Cherbourg* receipts, which Mr. Boyse keeps in a locked drawer of his counting house at Portsea. If those came into my custody, sir, the Solicitor would press the prosecution within a fortnight.' },
         'He sends with the letter a sketch of the counting house, the position of the drawer, and the form of key. He does not sign his name to the sketch.'
       ],
       onEnter: (s) => { s.flags.pulsomAllied = true; },
@@ -1258,7 +1258,7 @@ const CONTENT = {
       caption: 'A drawer, a key, a half-page in another man\'s hand.',
       audio: 'assets/audio/scene_5_6_strike.mp3',  // floorboards, the click of a wardstock lock
       body: [
-        'On the Tuesday agreed, with a borrowed pick and a borrowed key, the counting house is entered between the small hours of two and four. The drawer, in the corner cabinet, opens. The Cherbourg receipts &mdash; or your forgery &mdash; pass from one place to another in a single careful movement.',
+        'On the Tuesday agreed, with a borrowed pick and a borrowed key, the counting house is entered between the small hours of two and four. The drawer, in the corner cabinet, opens. The Cherbourg receipts — or your forgery — pass from one place to another in a single careful movement.',
         'You are out of the house before the dawn chorus. A boy from Gosport carries your packet (sealed with another man\'s seal) up the coach road to London.',
         'Three weeks pass. Then, all at once, the law moves.'
       ],
@@ -1306,7 +1306,7 @@ const CONTENT = {
       image: 'assets/images/act4_writ.jpg',
       caption: 'The Solicitor for Criminal Prosecutions reads the paper twice; the second reading is slower.',
       body: [
-        'The Solicitor in London is no fool. He compares the planted cocket to two other documents under Boyse\'s hand &mdash; one a wine-contract in the Customs records, one a private note from a Bristol receiver &mdash; and finds the imitation creditable but not faithful. The flourish on the *B* is wrong. The counter-signature of Mr. Reeve, who is suspected on his own account, is plainly forged: the date is two days after Reeve was confined to his bed with the gout.',
+        'The Solicitor in London is no fool. He compares the planted cocket to two other documents under Boyse\'s hand — one a wine-contract in the Customs records, one a private note from a Bristol receiver — and finds the imitation creditable but not faithful. The flourish on the *B* is wrong. The counter-signature of Mr. Reeve, who is suspected on his own account, is plainly forged: the date is two days after Reeve was confined to his bed with the gout.',
         'A constable comes for *you*, not for Boyse. You have a half-hour\'s warning, by Cooper, and you have lost it twice already in this story. There will not be a third such warning.',
         'You are taken at the Star Inn at Romsey and brought before the Solicitor in person.'
       ],
@@ -1451,7 +1451,7 @@ const CONTENT = {
       caption: 'You wear the coat and run the goods; you are paid by both, trusted by neither.',
       body: [
         'You continue, for three years, in His Majesty\'s service. You report some seizures (enough to be paid your salary) and you fail others (enough to keep the gang\'s confidence). You are pulled, on a Friday in March 1729, before the Commissioners of the Customs and asked to account for the discrepancy between your weekly returns and a private intelligence they have received from another quarter.',
-        'You give your account; it is not believed. You are dismissed from the service without further proceedings &mdash; the Customs preferring, in such cases, to be rid of a man rather than be embarrassed in a trial &mdash; and you find yourself with neither salary nor pardon, but also (such are the strange mercies of the eighteenth-century state) without indictment.',
+        'You give your account; it is not believed. You are dismissed from the service without further proceedings — the Customs preferring, in such cases, to be rid of a man rather than be embarrassed in a trial — and you find yourself with neither salary nor pardon, but also (such are the strange mercies of the eighteenth-century state) without indictment.',
         'You take a small ketch out of Cowes and resume the running trade in earnest. You are at it still, in a small way, when the great Hawkhurst gang is broken up after the murder of an officer at Goudhurst in 1748.'
       ],
       ending: true,
@@ -1485,7 +1485,7 @@ const CONTENT = {
         'You understand at once that this is not the simple piece of smuggling Boyse pretends. *Jacobite* sympathies are the open secret of his counting house. To bring Mr. Forbes ashore is to put yourself, knowingly, into the political traffic between Rome, Paris, and the disaffected gentry of north-east Scotland.'
       ],
       choices: [
-        { text: 'Agree, asking only the conditions of the run &mdash; the coast, the master, the date.',
+        { text: 'Agree, asking only the conditions of the run — the coast, the master, the date.',
           target: '5.8a_jacobite_meeting',
           effects: { trust: +10, exposure: +6 },
           lesson: 'Channel smugglers were the standard conveyance of political fugitives in both directions between France and Britain throughout the period 1715–1750. The Atterbury Plot of 1722 used the same routes; so did the agents who travelled before the Forty-Five. To agree to such work was to step out of the revenue business and into a political conspiracy potentially capital under the Treason Acts.'
@@ -1516,7 +1516,7 @@ const CONTENT = {
           effects: { flags: { jacobiteRoute: 'sussex' }, exposure: +6, trust: +4 },
           lesson: 'Following the principal\'s plan was the loyal course but not necessarily the safe one. The Sussex coast in 1725 was as heavily patrolled as any in the kingdom, after a decade of seizures; the prudent agent of the *Chevalier de St. George* in the same period preferred Northumberland, Aberdeenshire, or the rivers of the west of Scotland.'
         },
-        { text: 'Improvise. Land him directly upon the Aberdeenshire coast &mdash; a long sail, but no patrols.',
+        { text: 'Improvise. Land him directly upon the Aberdeenshire coast — a long sail, but no patrols.',
           target: '5.8b_jacobite_run',
           effects: { flags: { jacobiteRoute: 'aberdeen' }, exposure: -8, trust: -2 },
           lesson: 'The Aberdeenshire and Banffshire coasts were the historical Jacobite landing grounds throughout the period — Peterhead in 1715, the Spey in 1745. They were lightly patrolled because they were thinly populated and because the local gentry were known to favour the cause. The route was longer but the disembarkation easier.'
@@ -1537,7 +1537,7 @@ const CONTENT = {
       body: [
         'The wind serves. Cooper, who has not been told who the passenger is (only that he is no man\'s business but the gang\'s), keeps a respectful distance from the cabin. Mr. Forbes reads Cicero in the watch below and asks the boy Ned, with grave courtesy, after the trim of the topsail.',
         'On the fourth day out, in the latitude of the Lizard, a topsail cutter shows on the weather quarter. It is not the *Greyhound*; it is a vessel new to you, three-masted, perhaps a sloop-of-war out of Plymouth on the King\'s service.',
-        { dlg: 'Tom Cooper', text: 'She has us in the offing, sir. If she comes near enough to hail, the papers will pass &mdash; the cargo, sir, *will not*. What does the passenger weigh, Mr. {{name}}, in your conscience?' }
+        { dlg: 'Tom Cooper', text: 'She has us in the offing, sir. If she comes near enough to hail, the papers will pass — the cargo, sir, *will not*. What does the passenger weigh, {{name}}, in your conscience?' }
       ],
       choices: [
         { text: 'Hold the course. Trust the papers. Treat Mr. Forbes as honest a merchant\'s clerk as the Dolphin ever carried.',
@@ -1565,7 +1565,7 @@ const CONTENT = {
       caption: 'A boat in the surf; a passenger in the stern; a horse waiting under a thorn-tree.',
       audio: 'assets/audio/scene_5_8_landing.mp3',  // surf, an oar dipping, a horse cropping turf
       body: [
-        'The landing is made &mdash; by your route, at your hour, in your weather. Mr. Forbes steps from the Dolphin\'s gig into knee-deep surf with the dignity of a man stepping into a pew. He shakes your hand. He gives you, from the inside of his coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
+        'The landing is made — by your route, at your hour, in your weather. Mr. Forbes steps from the Dolphin\'s gig into knee-deep surf with the dignity of a man stepping into a pew. He shakes your hand. He gives you, from the inside of his coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
         { dlg: 'Alexander Forbes', text: 'Mr. {{name}}. I shall not forget this service. There is a Cause to which men of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, sir, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
         'He turns. He walks up the shingle. He is met, beyond the high-water mark, by another man in a blue coat. They mount; they ride inland; they are gone.',
         'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *cipher of the House of Stuart*.'
@@ -1592,8 +1592,8 @@ const CONTENT = {
       caption: 'Boyse pays the two hundred guineas; he also tells the truth, for once.',
       audio: 'assets/audio/scene_5_8_revelation.mp3',  // the same clock; this time, a softer voice
       body: [
-        'You return to Portsea. Boyse counts out two hundred guineas in two purses upon the desk. He sits down. He looks, for a long moment, less the man you have known and more the man he must have been at twenty &mdash; bookish, careful, perhaps once even capable of friendship.',
-        { dlg: 'David Boyse', text: 'You wonder why a wine-merchant trafficks in such matters, sir. I shall tell you, since you have served me well in it. The Cause has need of *small ships and quiet harbours*, and I have both. There is a network, Mr. {{name}}, that goes from Rome to Paris to Bordeaux to *here*, and from here to Edinburgh and to Lochiel. It is not a network of brandy. The brandy is its livery.' },
+        'You return to Portsea. Boyse counts out two hundred guineas in two purses upon the desk. He sits down. He looks, for a long moment, less the man you have known and more the man he must have been at twenty — bookish, careful, perhaps once even capable of friendship.',
+        { dlg: 'David Boyse', text: 'You wonder why a wine-merchant trafficks in such matters, sir. I shall tell you, since you have served me well in it. The Cause has need of *small ships and quiet harbours*, and I have both. There is a network, {{name}}, that goes from Rome to Paris to Bordeaux to *here*, and from here to Edinburgh and to Lochiel. It is not a network of brandy. The brandy is its livery.' },
         { dlg: 'David Boyse', text: 'You have lately carried a man for whom thirty thousand pounds was already offered, by Mr. Walpole\'s government, dead or alive. You have done well, sir. The Crown of England does not know your face yet. Have a care that it never shall.' },
         'You understand at last that the running trade was *never* only the running trade. The same coast, the same sloops, the same masters, served the smuggling economy and a transnational political conspiracy that the British state regarded with greater fear than any private fraud.',
         '*This is the second lesson Boyse will teach you: that a fraud upon the revenue and a treason against the King may use the same beach, the same lantern, and the same boy with the small beer.*'
@@ -1654,8 +1654,8 @@ const CONTENT = {
         'Your *exposure* has reached the height beyond which no man may stand. Your story turns now upon a single question: shall you flee, or shall you stand?'
       ],
       choices: [
-        { text: 'Flee &mdash; to Jersey, by the next bottom.', target: '4.2_flee' },
-        { text: 'Stand &mdash; turn the King\'s evidence at the Custom House.', target: '4.3_inform' }
+        { text: 'Flee — to Jersey, by the next bottom.', target: '4.2_flee' },
+        { text: 'Stand — turn the King\'s evidence at the Custom House.', target: '4.3_inform' }
       ]
     },
 
