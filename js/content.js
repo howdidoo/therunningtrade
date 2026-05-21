@@ -172,7 +172,7 @@ const CONTENT = {
         { text: 'Take only the purse; leave the papers where they lie.',
           target: '1.3_innkeeper',
           effects: { addItem: ['purse'], exposure: -3 },
-          lesson: 'The first principle of the running trade: avoid carrying paper that might incriminate you. The 1733 Committee unravelled whole networks through ledgers and letters seized from clerks.'
+          lesson: 'The first principle of the running trade: avoid carrying paper that might incriminate you.'
         }
       ]
     },
@@ -277,7 +277,7 @@ const CONTENT = {
         { text: 'Note these names; turn for the quay.',
           target: '1.5_meet_cooper',
           effects: { trust: +3 },
-          lesson: 'Identifying the corrupt and honest officers in a port was hard intelligence. The smuggler David Boyse is reported, in the 1733 deposition, to have kept a private list of which Customs men in each port could be "compounded with" and which could not.'
+          lesson: 'Identifying the corrupt and honest officers in a port was hard intelligence. The smuggler David Boyse is reported to have kept a private list of which Customs men in each port could be "compounded with" and which could not.'
         }
       ]
     },
@@ -437,8 +437,8 @@ const CONTENT = {
       caption: 'A French port, much used by the running trade for brandy and tea.',
       body: [
         'The Channel crossing is short and uneventful. At Cherbourg you put up at the Sign of the Three Cranes, where a Norman merchant by the name of **Pierre Lebec** does the business of half the south-coast smugglers without seeming to do any business at all.',
-        { dlg: 'Pierre Lebec', text: 'Monsieur {{name}}. Monsieur Boyse sends his regards. The brandy is ready &mdash; one hundred and twenty ankers, very fine, of the brandies of Charente. There is also tea, gunpowder green, that I have set aside for those who can pay. And silks, if you have a mind to be bold.' },
-        'Defoe wrote of this trade that it "had been the constant complaint of the fair trader" how the dutied goods were undersold by the smuggled. Lebec smiles to remember it.'
+        { dlg: 'Pierre Lebec', text: 'Monsieur {{name}}. Monsieur Boyse sends his regards. The brandy is ready — one hundred and twenty ankers, very fine, of the brandies of Charente in France. There is also tea, gunpowder green, that I have set aside for those who can pay. And silks, if you have a mind to be bold.' },
+        
       ],
       choices: [
         { text: 'Take only the brandy. Bulky but safe to carry; well-known to your buyers.',
@@ -449,12 +449,12 @@ const CONTENT = {
         { text: 'Brandy and tea. Greater profit, greater risk.',
           target: '2.2_load',
           effects: { flags: { cargo: 'brandy_tea' }, addItem: 'receipt', exposure: +8, trust: +3 },
-          lesson: 'Tea bore the highest duties in the kingdom — up to 119% in some years — and offered the greatest reward to the smuggler. It was also the cargo most surveilled: the East India Company had its own informers, and the Customs were lobbied directly by the Company to seize tea cargoes preferentially.'
+          lesson: 'Tea bore some of the highest duties in the kingdom — up to 119% in some years — and offered great reward to the smuggler. It was also the cargo closely surveilled: the East India Company, which had a monopoly over tea imports, had its own informers, and the Customs were lobbied directly by the Company to seize tea cargoes preferentially.'
         },
         { text: 'A small parcel of silks only — light, dear, and damnable to be caught with.',
           target: '2.2_load',
-          effects: { flags: { cargo: 'silks' }, addItem: 'receipt', exposure: +6, trust: -2 },
-          lesson: 'Silks were the most concealable cargo and bore prohibitive duties — but they were *prohibited*, not merely dutied, which made any seizure a criminal matter rather than a civil one. Confederates who wanted bulk and reliable buyers thought silk-runners reckless.'
+          effects: { flags: { cargo: 'silks' }, addItem: 'receipt', exposure: +2, trust: -5 },
+          lesson: 'Silks were the most concealable cargo and bore prohibitive duties. Confederates who wanted bulk and reliable buyers for higher volumes thought silk-runners reckless.'
         }
       ]
     },
@@ -477,7 +477,7 @@ const CONTENT = {
         { text: 'Lay over a night and ask Lebec to procure a *false manifest* for an ostensible run to Ostend.',
           target: '2.3_passage',
           effects: { addItem: 'cocket', exposure: -6, trust: -2 },
-          lesson: 'A forged manifest was insurance: even if intercepted, you could plead an honest passage to a third port. It cost time and a confederate\'s suspicion (every delay narrowed the gang\'s margin), but it was the device most often used by professional runners and recommended by Boyse himself in the 1733 deposition.'
+          lesson: 'A forged manifest was insurance: even if intercepted, you could plead an honest passage to a third port. It cost time and a confederate\'s suspicion (every delay narrowed the gang\'s margin), but it was the device most often used by professional runners and recommended by Boyse himself.'
         }
       ]
     },
@@ -504,12 +504,12 @@ const CONTENT = {
         },
         { text: 'Send Ned, and hold the deck.',
           target: '2.4_sighting',
-          effects: { trust: -3 },
+          effects: { trust: -5 },
           lesson: 'Sending the boy where you would not go yourself was a small kind of contempt. Ned will say nothing. Cooper will say nothing. But neither will forget, and Boyse, who hears everything, will hear of it.'
         },
         { text: 'Cut the lashing of the loose anker and let the sea have it; save the rest.',
           target: '2.4_sighting',
-          effects: { exposure: -4, trust: -4 },
+          effects: { exposure: -4, trust: -8 },
           lesson: 'A lost anker was lost profit — and a half-anker of brandy, washed ashore, gave a riding officer a tale to write up in his weekly return. Smugglers preferred to risk a vessel rather than throw cargo, because evidence on the beach travelled to the Custom House faster than evidence at the bottom of the Channel.'
         }
       ]
@@ -557,19 +557,19 @@ const CONTENT = {
       choices: [
         { text: 'Order the batsmen to give him a thrashing &mdash; nothing fatal &mdash; and run.',
           target: '2.6_aftermath',
-          effects: { exposure: +12, trust: +6, flags: { officerHurt: true } },
+          effects: { exposure: +20, trust: +6, flags: { officerHurt: true } },
           lesson: 'Violence against riding officers was the line that turned smuggling into criminal felony. The 1736 *Smuggling Act* was passed in direct response to the rising count of officers beaten or shot on the south coast. Your gang loves boldness; the gallows in time will love it too.'
         },
         { text: 'Slip away quietly with the cargo — let him write his report; deny everything.',
           target: '2.6_aftermath',
-          effects: { exposure: +6 },
+          effects: { exposure: +10 },
           lesson: 'A riding officer\'s report on a "running cargo seen at Pevensey, persons unknown" went into the Collector\'s weekly return and fed, in time, the dossier kept by the Customs solicitors in London. Anonymity slowed the law; it did not stop it.'
         },
         { text: 'Throw a guinea into the sand and tell him to look the other way.',
           target: '2.6_aftermath',
           effects: { exposure: -4, trust: -2 },
           requires: { item: 'purse' },
-          lesson: 'The on-the-spot bribe to a riding officer was a recognised practice — Pulsom\'s 1733 evidence describes officers receiving "a piece" to walk on. But every successful bribe was an expense, and every refused bribe became material evidence in a future prosecution. Confederates resented the cost.'
+          lesson: 'The on-the-spot bribe to a riding officer was a recognised practice. But every successful bribe was an expense, and every refused bribe became material evidence in a future prosecution. Confederates resented the cost.'
         }
       ]
     },
@@ -589,7 +589,7 @@ const CONTENT = {
         { text: 'Northward, to London — the goods to be disposed of through Mr. Boyse\'s factor.',
           target: '3.1_summons',
           effects: { trust: +2 },
-          lesson: 'Inland networks of farmers, carriers and London receivers turned smuggled goods into cash. Boyse\'s factor was a respectable wine-merchant in the City who paid in bills of exchange — no different in form from any merchant\'s account, except that it was illegal at every step.'
+          lesson: 'Inland networks of farmers, carriers and London receivers, inlcuding druggists and innkeepers, turned smuggled goods into cash. Boyse\'s factor was a respectable wine-merchant in the City who paid in bills of exchange — no different in form from any merchant\'s account, except that it was illegal at every step.'
         }
       ]
     },
@@ -637,8 +637,8 @@ const CONTENT = {
         },
         { text: 'Declare every chest. Take the duty as the price of safety.',
           target: '3.3_customs',
-          effects: { flags: { manifest: 'full' }, exposure: -10, trust: -10 },
-          lesson: 'Full declaration was *fair trading* — the practice of merchants who paid all dues and resented the smugglers who undercut them. It was safe; it was honourable; and it was, in Boyse\'s view, a betrayal of the gang\'s entire economic logic.'
+          effects: { flags: { manifest: 'full' }, exposure: -10, trust: -20 },
+          lesson: 'Full declaration was *fair trading* — the practice of merchants who paid all dues and resented the smugglers who undercut them. It was safe; it was honourable; and it was, in a smuggler's view, a betrayal of the gang\'s entire economic logic.'
         }
       ]
     },
@@ -662,8 +662,8 @@ const CONTENT = {
         },
         { text: 'Insist that Mr. Henwood attend also — appear above suspicion.',
           target: '3.4_henwood',
-          effects: { exposure: -8, trust: -8 },
-          lesson: 'Inviting an honest officer into your business was a defensive posture — a fair-trader\'s gambit — that cleared you with the Customs but mortified the gang. The 1733 deposition recorded that Boyse "took it amiss" when his men volunteered for honest searches.'
+          effects: { exposure: -8, trust: -12 },
+          lesson: 'Inviting an honest officer into your business was a defensive posture — a fair-trader\'s gambit — that cleared you with the Customs but mortified the gang.'
         }
       ]
     },
@@ -682,7 +682,7 @@ const CONTENT = {
           target: '3.5_after',
           effects: { exposure: -4, trust: +6 },
           requires: { item: 'purse' },
-          lesson: 'Cash on the quay was the smuggler\'s best receipt: no paper, no debt, no leverage on either side. Boyse always insisted on it. The Customs solicitor in the 1725 prosecution noted ruefully that "no monies passed by note that we could trace".'
+          lesson: 'Cash on the quay was the smuggler\'s best receipt: no paper, no debt, no leverage on either side. Boyse always insisted on it.'
         },
         { text: 'Promise him by note — through Mr. Boyse — in three days.',
           target: '3.5_after',
@@ -691,7 +691,7 @@ const CONTENT = {
         },
         { text: 'Refuse, and threaten him with a counter-information if he troubles you.',
           target: '3.5_after',
-          effects: { exposure: +12, trust: -8 },
+          effects: { exposure: +15, trust: -8 },
           lesson: 'Threatening a corrupt officer was the worst of both worlds. Reeve now had no incentive to protect you and every incentive to inform on you first — *vexatious* counter-informations were a known smuggler\'s tactic, but only successful when paired with payment, never with threat alone.'
         }
       ]
@@ -709,8 +709,8 @@ const CONTENT = {
       choices: [
         { text: 'Submit; admit the partial declaration; pay the duty and triple penalty if levied.',
           target: '3.5_after',
-          effects: { exposure: -10, trust: -12, flags: { caughtPartial: true } },
-          lesson: 'Voluntary submission converted a *criminal* matter into a *civil* one — a triple-value penalty for unpaid duty, recoverable as debt. Painful but survivable. The gang, however, treated such submissions as betrayal: every penalty paid by one man revealed the gang\'s tactics to the Customs solicitors.'
+          effects: { exposure: -10, trust: -20, flags: { caughtPartial: true } },
+          lesson: 'Voluntary submission brought *civil* penalties — a triple-value penalty for unpaid duty, recoverable as debt, but negotiable. Painful but survivable. The gang, however, treated such submissions as betrayal: every penalty paid by one man revealed the gang\'s tactics to the Customs solicitors.'
         },
         { text: 'Offer him a private gift — ten guineas in his pocket.',
           target: '3.4a_henwood_bribe',
@@ -719,7 +719,7 @@ const CONTENT = {
         { text: 'Strike the candle from his hand and go.',
           target: '3.4b_henwood_flee',
           effects: { exposure: +20, trust: +4 },
-          lesson: 'Assault on a Customs officer was a felony from the 1736 Act onwards; even in 1725 it was a hanging matter under earlier statutes. Boyse will admire the boldness in private and disclaim it in public. Your face is now a face every officer in the south will know.'
+          lesson: 'Assault on a Customs officer was a felony. Boyse will admire the boldness in private and disclaim it in public. Your face is now a face every officer in the south will know.'
         }
       ]
     },
@@ -736,8 +736,8 @@ const CONTENT = {
       choices: [
         { text: 'Bow, and bear it.',
           target: '3.5_after',
-          effects: { exposure: +14, trust: -10, flags: { caughtBribery: true } },
-          lesson: 'Honest officers existed in numbers contemporaries underestimated. The 1733 Report named several "diligent and do their duty" — Henwood is composited from such men. An attempted bribe to an honest officer became, by his own deposition, hard evidence of corrupt intent.'
+          effects: { exposure: +15, trust: -10, flags: { caughtBribery: true } },
+          lesson: 'Honest officers existed in numbers contemporaries underestimated. An attempted bribe to an honest officer became, by his own deposition, hard evidence of corrupt intent.'
         }
       ]
     },
@@ -754,7 +754,7 @@ const CONTENT = {
       choices: [
         { text: 'To Mr. Boyse, to give an account.',
           target: '3.5_after',
-          effects: { exposure: +12, trust: -2 },
+          effects: { exposure: +20, trust: -2 },
           lesson: 'A man pursued by an honest officer\'s memory was a man already half-prosecuted. Henwood\'s report will go to the Collector at Poole, thence to the Solicitor in London, and within a fortnight your description will be in every Customs office on the south coast.'
         }
       ]
@@ -768,14 +768,14 @@ const CONTENT = {
       audio: 'assets/audio/scene_3_5_counting_house.mp3', // a single ticking clock, fire
       body: [
         'Mr. **David Boyse** is forty-five years old, a wine-merchant by trade and a trafficker by profession, lately suspected of Jacobitical sympathies but never indicted for it. His partners **John Hatch** and **John Sellers** stand at the window. He listens to your account with his hands folded.',
-        { dlg: 'David Boyse', text: 'You have done tolerably, Mr. {{name}}. The Customs are a mousetrap, and you have not yet sprung it. There is one further matter on which I require your particular service. Pulsom — my clerk — has asked leave to speak to me. Alone. I do not care for the look of him these last weeks.' },
+        { dlg: 'David Boyse', text: 'You have done tolerably, {{name}}. The Revenue laws are a mousetrap, and you have not yet sprung it. There is one further matter on which I require your particular service. Pulsom — my clerk — has asked leave to speak to me. Alone. I do not care for the look of him these last weeks.' },
         { dlg: 'David Boyse', text: 'Come to my house at Portsea by Thursday. We shall settle all our accounts together.' }
       ],
       onEnter: (s) => { s.flags.actThreeDone = true; },
       choices: [
         { text: 'Promise to attend.',
           target: '4.1_warning',
-          effects: { trust: +3 },
+          effects: { trust: +8 },
           lesson: 'Boyse rewarded loyalty with greater secrets. To be summoned to his Portsea house was, in the gang\'s grammar, a sign of full inclusion. It was also — though you do not yet know it — exactly the invitation that had been extended to a man called Crouch the night before you woke without your memory.'
         }
       ]
@@ -892,7 +892,7 @@ const CONTENT = {
         { text: 'Spend the day in Portsmouth first, settle small debts, and travel by stage at evening.',
           target: '4.5_evidence_roll',
           effects: { exposure: +6 },
-          lesson: 'An informer who took his leisure in his own port — even to close honest business — gave the gang a window in which to act. The 1733 Report records two informers (Wickham and Trim) who delayed their removal for "small affairs" and were taken by their old confederates within the week.'
+          lesson: 'An informer who took his leisure in his own port — even to close honest business — gave the gang a window in which to act..'
         }
       ]
     },
@@ -948,12 +948,7 @@ const CONTENT = {
       endingFlag: 'FINIS — THE WITNESS PRESERVED',
       endingHtml: `
         <p>The Crown protected its principal informers when it could, and to a
-        degree that surprised contemporaries. The 1733 <em>Report</em> records
-        that the Solicitor for the Customs maintained "houses of safety" at
-        Stiffkey, at Mayfield, and at three further addresses not specified
-        in the printed evidence; informers in fear of their lives were
-        conducted to these houses, given altered names, and allowed to settle
-        in country parishes far from the south coast.</p>
+        degree that surprised contemporaries. 
         <p>The historical clerk <strong>Isaac Poulsum</strong> survived his
         evidence, married, kept a chandlery in Stepney, and lived to see the
         printed <em>Report</em> of 1733 in which his name appears only as a
@@ -983,18 +978,9 @@ const CONTENT = {
         regarded the protection of evidence as a serious operational problem.
         The most famous case is that of Daniel Chater and William Galley
         (1748), murdered by the Hawkhurst gang while in the custody of Customs
-        officers en route to give evidence. Their deaths produced the
-        <em>Act for the more effectual punishing such persons as shall
-        wilfully and maliciously destroy ships, &amp;c.</em> (22 Geo. II
-        c. 46) and a substantial intensification of enforcement.</p>
-        <p>Even in 1725 the danger to a Crown witness was understood. The
-        <em>Report</em> of 1733 lists, in an appendix, eight informers
-        "destroyed or vanished" since 1718 — about a quarter, by the
-        Solicitor\'s own count, of the principal witnesses he had committed
-        to protection.</p>
-        <p>Your ending follows the documented fate of one such witness,
-        unnamed in the printed <em>Report</em> but referred to in the
-        Solicitor\'s private letters as "the Portsmouth clerk".</p>
+        officers en route to give evidence. Their deaths produced an aggressive prosecution by the government and the Duke of Richmond.
+              <p>Even in 1725 the danger to a Crown witness was understood. Some were "spirited" away or kidnapped, others bribed or assaulted.</p>
+      
       `
     },
 
@@ -1033,7 +1019,7 @@ const CONTENT = {
         { text: 'Walk straight from this room to the Custom House in London and place yourself in His Majesty\'s service.',
           target: '5.7_customs_alliance',
           effects: { trust: -30, exposure: -6 },
-          lesson: 'A smuggler who walked into the Customs of his own accord — not merely to inform but to *enlist* — was a creature contemporaries thought rarer than he was. The 1733 Report records several former runners commissioned as riding officers or harbour searchers; their knowledge of the trade was prized, but their old confederates regarded them as men beyond the pale of any consideration.'
+          lesson: 'A smuggler who walked into the Customs of his own accord — not merely to inform but to *enlist* — was a creature contemporaries thought rarer than he was. But several did and were appointed to deliver warrants or even as junior officers.'
         }
       ]
     },
@@ -1080,7 +1066,7 @@ const CONTENT = {
         and the Customs <em>began</em> to criminalise smuggling — earlier, it had been
         prosecuted almost entirely as a civil matter for the recovery of duties.</p>
         <p>The Hawkhurst gang, who landed cargoes on the Sussex coast through the 1730s
-        and 1740s, were broken up only after the murder of an excise officer in 1748.</p>
+        and 1740s, were broken up only after the murder of an officer in 1748.</p>
       `
     },
 
@@ -1246,7 +1232,7 @@ const CONTENT = {
         { text: 'Plant the forgery in Boyse\'s counting house on Tuesday next.',
           target: '5.6b_revenge_strike',
           effects: { addItem: 'cocket', exposure: +4, trust: -4 },
-          lesson: 'Counter-forgery was one of the smuggling trade\'s darker arts. The 1733 Report names two cases in which rival smugglers planted false papers upon one another, and one in which a Customs officer planted papers on a smuggler. The technique cuts both ways: the Solicitor learned, by the 1730s, to authenticate any paper produced against a known runner.'
+          lesson: 'Counter-forgery was one of the smuggling trade\'s darker arts. The Solicitor learned, by the 1730s, to authenticate any paper produced against a known runner.'
         }
       ]
     },
@@ -1285,16 +1271,14 @@ const CONTENT = {
       endingFlag: 'FINIS — REVENGE',
       endingHtml: `
         <p>Revenge prosecutions within the smuggling syndicates were less famous than
-        Crown prosecutions but probably more frequent. The 1733 Report alludes to
-        "informations laid by one of their own confederates upon a quarrel" as
-        a recognised pattern.</p>
+        Crown prosecutions but they occured, brought by unhappy confederates or those simply seeking to save themselves. </p>
         <p>In the case of <strong>David Boyse</strong>, the actual prosecution was
         initiated not by a private rival but by his own clerk Isaac Poulsum, who
-        delivered receipts and ledger pages to the Customs Solicitor in November
-        1725. Boyse was bonded, examined, and ultimately convicted in penalties
-        far exceeding his estate — a fate from which his partner John Hatch did
+        delivered receipts and ledger pages to the Customs Solicitor in
+        1725. Boyse was ultimately convicted in penalties
+        far exceeding his estate — a fate from which his partners John Hatch and John Sellers did
         not escape.</p>
-        <p>Whether the private hand that closed upon him deserved the £500 the
+        <p>Whether the private hand that closed upon him deserved the reward that the
         Crown paid for the same evidence is a question the Court of Exchequer
         did not concern itself with.</p>
       `
@@ -1314,14 +1298,8 @@ const CONTENT = {
       endingTitle: 'An Ending — The Forger Forged',
       endingFlag: 'FINIS — A FALSE COCKET',
       endingHtml: `
-        <p>Forgery of customs documents was a separate criminal offence under the
-        Stat. 5 Eliz. c. 14 and successive Acts. A planted forgery, if detected,
-        produced a prosecution against the planter rather than the intended target.</p>
-        <p>The 1733 Report records the case of <em>Rex v. Wormald</em> (1729), in
-        which a Sussex smuggler attempted to fasten a fictitious cocket upon a
-        rival and was himself convicted of the forgery — and additionally indicted
-        for the underlying smuggling, on the basis of his manifest familiarity
-        with the genuine documents he had counterfeited.</p>
+        <p>Forgery of customs documents was a separate offence and could bring prosecution against the forger.</p>
+    
       `
     },
 
@@ -1368,7 +1346,7 @@ const CONTENT = {
         { text: 'Return to the south coast as a sworn officer.',
           target: '5.7b_customs_sting',
           effects: { addItem: 'pardon', trust: -10, exposure: -10 },
-          lesson: 'The 1725 Customs Establishment listed 1,107 sworn officers in England and Wales, of whom 280 served as riding officers on the south coast — a thin line indeed, against an estimated 20,000 men who took some part in the running trade. The Crown commissioned every competent former smuggler it could persuade.'
+          lesson: 'The 1725 Customs Establishment listed 1,107 sworn officers in England and Wales, of whom only a few hundred served as riding officers on the south coast — a thin line indeed, against an estimated 20,000 persons who took some part in the running trade. The Crown commissioned every competent former smuggler it could persuade.'
         }
       ]
     },
@@ -1407,7 +1385,7 @@ const CONTENT = {
         { text: 'Let the trap close. Cooper is taken; the cargo is condemned; you walk away in His Majesty\'s coat.',
           target: '5.7c_customs_ending',
           effects: { trust: -20, exposure: -10, flags: { stingFull: true } },
-          lesson: 'The "sting" — a smuggler\'s landing arranged for the purpose of being seized — was the most cost-effective seizure the Customs could organise. The 1733 Report records four such operations on the Sussex coast between 1726 and 1731, each yielding cargo and persons in numbers that ordinary patrols could not produce.'
+          lesson: 'Officers, sometimes assisted by military soldiers, might often wait nights watching for the arrival of a rumoured shipment.'
         },
         { text: 'Give the wrong signal. Cooper escapes with the cargo. You report a failed seizure.',
           target: '5.7c_customs_double',
@@ -1437,10 +1415,7 @@ const CONTENT = {
         for figures — rose to surveyorships and comptrollerships.</p>
         <p>The trade-off was permanent. A sworn officer was kept under observation
         by his old confederates and by his new colleagues equally; he could not
-        cross back. The historian David Chan Smith argues that the porous social
-        boundary between smuggler and officer was one of the running trade\'s
-        most distinctive structural features — a porosity that the modern
-        criminal justice system has lost entirely.</p>
+        cross back. The most famous was Gabriel Tompkins. </p>
       `
     },
 
@@ -1505,18 +1480,18 @@ const CONTENT = {
       caption: 'A man in a plain blue coat; very quiet eyes; a French servant who is not French.',
       audio: 'assets/audio/scene_5_8_bordeaux.mp3',  // a Gascon street, a church bell at sext
       body: [
-        'You meet Mr. **Alexander Forbes**, Master of Pitsligo, at the Sign of the Three Pilgrims in the rue Sainte-Catherine at Bordeaux. He is thirty-eight years old, plain in his dress, courteous in his speech, and very tired. He has been on the road since the feast of St. Andrew. He carries a single portmanteau, a sword he does not draw, and a sealed packet of papers which he will not let out of his sight.',
-        { dlg: 'Mr. Forbes', text: 'Mr. {{name}}, you have my entire confidence and my entire indebtedness. I shall require to be brought ashore, by your contrivance, at any quiet beach in the north-east. *Banffshire* would suit me, but I take what conveyance is given. I am to be conducted to Edinburgh, then to *Lochiel*, and then to where God wills.' },
+        'You meet Ms. **Arabella Murray**, of Pitsligo, at the Sign of the Three Pilgrims in the rue Sainte-Catherine at Bordeaux. He is thirty-eight years old, plain in his dress, courteous in his speech, and very tired. He has been on the road since the feast of St. Andrew. He carries a single portmanteau, a sword he does not draw, and a sealed packet of papers which he will not let out of his sight.',
+        { dlg: 'Ms. Murray', text: '{{name}}, you have my entire confidence and my entire indebtedness. I shall require to be brought ashore, by your contrivance, at any quiet beach in the north-east. *Banffshire* would suit me, but I take what conveyance is given. I am to be conducted to Edinburgh, then to *Lochiel*, and then to where God wills.' },
         'He gives you his hand. The hand is steady. The fingers are stained, lightly, with the same Indian ink that an exiled court uses for its correspondence with its agents.',
         'Boyse\'s instruction is for a landing at Sussex — Pevensey or Cuckmere — to be followed by an overland transit to Newcastle. You see at once a difficulty. The Sussex coast is watched. The northern coasts are not.'
       ],
       choices: [
         { text: 'Follow Boyse\'s plan. Sussex landing, then by post-horse north.',
           target: '5.8b_jacobite_run',
-          effects: { flags: { jacobiteRoute: 'sussex' }, exposure: +6, trust: +4 },
+          effects: { flags: { jacobiteRoute: 'sussex' }, exposure: +10, trust: +4 },
           lesson: 'Following the principal\'s plan was the loyal course but not necessarily the safe one. The Sussex coast in 1725 was as heavily patrolled as any in the kingdom, after a decade of seizures; the prudent agent of the *Chevalier de St. George* in the same period preferred Northumberland, Aberdeenshire, or the rivers of the west of Scotland.'
         },
-        { text: 'Improvise. Land him directly upon the Aberdeenshire coast — a long sail, but no patrols.',
+        { text: 'Improvise. Land her directly upon the Aberdeenshire coast — a long sail, but no patrols.',
           target: '5.8b_jacobite_run',
           effects: { flags: { jacobiteRoute: 'aberdeen' }, exposure: -8, trust: -2 },
           lesson: 'The Aberdeenshire and Banffshire coasts were the historical Jacobite landing grounds throughout the period — Peterhead in 1715, the Spey in 1745. They were lightly patrolled because they were thinly populated and because the local gentry were known to favour the cause. The route was longer but the disembarkation easier.'
@@ -1540,19 +1515,19 @@ const CONTENT = {
         { dlg: 'Tom Cooper', text: 'She has us in the offing, sir. If she comes near enough to hail, the papers will pass — the cargo, sir, *will not*. What does the passenger weigh, {{name}}, in your conscience?' }
       ],
       choices: [
-        { text: 'Hold the course. Trust the papers. Treat Mr. Forbes as honest a merchant\'s clerk as the Dolphin ever carried.',
+        { text: 'Hold the course. Trust the papers. Treat Ms. Murray as honest a traveller as the Dolphin ever carried.',
           target: '5.8c_jacobite_landing',
           effects: { exposure: +6, trust: +4 },
           lesson: 'Cool nerve in a hailing was a smuggler\'s essential discipline. Most boardings were brief and concerned only with the manifest; the careful runner travelled with papers that would withstand twenty minutes\' interrogation. A passenger who could pass as a clerk had been pre-arranged in dress, demeanour, and small biographical detail.'
         },
-        { text: 'Sink Mr. Forbes\'s packet, weighted, on a buoy; recover it after the landing.',
+        { text: 'Sink Ms. Murray\'s packet, weighted, on a buoy; recover it after the landing.',
           target: '5.8c_jacobite_landing',
           effects: { exposure: -6, trust: 0, flags: { jacobitePacketSunk: true } },
           lesson: 'Sinking papers — like sinking tubs — was the smuggler\'s way of preserving evidence from inspection. The packet, weighted and marked with a buoy, would survive an inshore boarding; the *passenger himself* would still need to pass an examination. The political cargo, however, was the papers more than the man.'
         },
         { text: 'Crowd on sail. Outrun her.',
           target: '5.8c_jacobite_landing',
-          effects: { exposure: +12, trust: +6 },
+          effects: { exposure: +20, trust: +6 },
           lesson: 'Flight from a sloop-of-war was a confession of guilt before it was a chase. The Dolphin had the legs of most cutters on most winds, but in this wind she had no certain advantage; running for it would put your description (and the description of every man aboard) into His Majesty\'s naval intelligence within the week.'
         }
       ]
@@ -1565,17 +1540,17 @@ const CONTENT = {
       caption: 'A boat in the surf; a passenger in the stern; a horse waiting under a thorn-tree.',
       audio: 'assets/audio/scene_5_8_landing.mp3',  // surf, an oar dipping, a horse cropping turf
       body: [
-        'The landing is made — by your route, at your hour, in your weather. Mr. Forbes steps from the Dolphin\'s gig into knee-deep surf with the dignity of a man stepping into a pew. He shakes your hand. He gives you, from the inside of his coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
-        { dlg: 'Alexander Forbes', text: 'Mr. {{name}}. I shall not forget this service. There is a Cause to which men of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, sir, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
-        'He turns. He walks up the shingle. He is met, beyond the high-water mark, by another man in a blue coat. They mount; they ride inland; they are gone.',
-        'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *cipher of the House of Stuart*.'
+        'The landing is made — by your route, at your hour, in your weather. Ms. Murray steps from the Dolphin\'s gig into knee-deep surf with the dignity of a woman stepping into a pew. She shakes your hand. She gives you, from the inside of her coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
+        { dlg: 'Arabella Murray', text: '{{name}}. I shall not forget this service. There is a Cause to which those of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
+        'She turns. She walks up the shingle. She is met, beyond the high-water mark, by a man in a blue coat. They mount; they ride inland; they are gone.',
+        'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *insignia of the House of Stuart*.'
       ],
       onEnter: (s) => { s.flags.jacobiteLanded = true; },
       choices: [
         { text: 'Pocket it carefully, return to the Dolphin, sail home.',
           target: '5.8d_jacobite_revelation',
-          effects: { trust: +6, exposure: +4 },
-          lesson: 'A Stuart cipher in your coat was, in 1725, evidence sufficient to support an indictment for treason under the Stat. 7 & 8 Will. III c. 3. A wise courier disposed of such gifts at once. The romance of the running trade depended, very often, on its courier\'s ignorance of what he was carrying.'
+          effects: { trust: +6, exposure: +10 },
+          lesson: 'A Stuart cipher in your coat was, in 1725, evidence sufficient to support an examination for treason. A wise courier disposed of such gifts at once. The romance of the running trade depended, very often, on its courier\'s ignorance of what he was carrying.'
         },
         { text: 'Refuse the snuffbox: throw it after him into the surf.',
           target: '5.8d_jacobite_revelation',
@@ -1602,7 +1577,7 @@ const CONTENT = {
         { text: 'Take the two hundred guineas and walk out into a different world from the one you walked in.',
           target: '5.8e_jacobite_ending',
           effects: { trust: +10, exposure: +4 },
-          lesson: 'The conflation of smuggling networks with political subversion is one of the central insights of the 1733 Report and of modern historians of the running trade. The Customs Solicitor in 1725 already understood that breaking Boyse\'s syndicate meant disrupting a Stuart courier route; this was a private motive for prosecution that the public papers did not record.'
+          lesson: 'The conflation of smuggling networks with political subversion is one of the central insights of modern historians of the running trade.'
         }
       ]
     },
@@ -1629,12 +1604,10 @@ const CONTENT = {
         disembarkation for Stuart couriers between the risings.</p>
         <p>The historical Boyse syndicate was suspected of Jacobite contacts in
         1725 but never indicted for them — the Customs Solicitor preferred the
-        clean civil case over the contestable political one. The 1733 Report
-        speaks delicately of "private adventurers whose freight was not always
-        what the King\'s revenue did most regret."</p>
-        <p>That the running trade was, in part, the courier service of a
+        clean civil case over the contestable political one. </p>
+        <p>That the running trade might be, in part, the courier service of a
         political conspiracy is the deepest of the lessons this game has tried
-        to teach. The brandy, as Mr. Boyse said, was its livery.</p>
+        to teach.</p>
       `
     },
 
@@ -1798,16 +1771,11 @@ const CONTENT = {
       endingFlag: 'FINIS — THE CUSTOMS\' DUE',
       endingHtml: `
         <p>The Court of Exchequer was the Crown\'s civil revenue court. Smuggling
-        prosecutions in this period were brought there <em>ad personam</em> for
+        prosecutions in this period were brought there for
         the triple value of duties saved, recoverable as a debt — a punishment
         that did not technically convict the runner of a crime, but routinely
-        consigned him to a debtors\' prison for the rest of his life.</p>
-        <p>This was the great paradox of the 1720s revenue enforcement that the
-        historian David Chan Smith calls "the strength of weak states": the
-        Customs lost ninety-nine encounters out of a hundred, and yet the
-        hundredth was financially catastrophic. The running trade flourished
-        because each encounter could be evaded; it was checked, in the end,
-        because <em>some</em> encounter could not.</p>
+        consigned him or her to a debtors\' prison for the rest of their life.</p>
+        
         <p>Your sentence is the historical sentence of <strong>John Hatch</strong>,
         who in 1726 was condemned in penalties of £55,000 and died in the Fleet
         in 1732.</p>
@@ -1828,10 +1796,7 @@ const CONTENT = {
       endingFlag: 'FINIS — THE FALSE BROTHER',
       endingHtml: `
         <p>Smuggling syndicates governed themselves by ferocious internal discipline.
-        Members who lost the trust of the gang were typically informed upon by their
-        own associates as a way of disposing of a liability. Boyse himself was said
-        in 1733 to have paid "upwards of £200" in bribes and jury entertainments to
-        manage exactly such a risk.</p>
+         </p>
       `
     }
   }
