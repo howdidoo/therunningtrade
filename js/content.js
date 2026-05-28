@@ -70,8 +70,8 @@ const CONTENT = {
       title: 'THE RUNNING TRADE',
       subtitle: "A Smuggler's Reckoning — Anno Dom. 1725",
       body: [
-        'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high; the temptation to evade them is higher. Whole communities along the southern coast of England live by what contemporaries call **the running trade**.',
-        'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period. Their organization was real, and so was their fate.',
+        'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high and so the temptation to evade them is higher. Some items, including at times French brandy and types of cottons, are even prohibited altogether. Consumers want cheaper, tax-free goods and more selection. Sellers are happy to offer them if they can. Whole communities along the southern coast of England live by what contemporaries call **the running trade**.',
+        'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period, and they presented themselves as wine merchants. Their organization was real and so was their fate.',
         { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> — how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> — your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
         'Every choice that moves a meter will be followed by a brief *Reflection* — the historical reasoning behind the consequence.'
         
@@ -88,7 +88,7 @@ const CONTENT = {
       <p>The goal of the game is to learn about the dynamics of eighteenth-century smuggling and its underworld.</p>
       <p>The mechanics — debenture frauds, "running" cargoes by moonlight,
       under-declarations, bribery of land-waiters, riding officers patrolling the coast,
-      informations <em>ad rem</em> and <em>ad personam</em> in the Court of Exchequer
+      informations in the Court of Exchequer
       — are drawn from the 1733 House of Commons <em>Report on the Frauds and
       Abuses in the Customs</em> and the reports of contemporary writers.</p>
       <p>The gang's three leaders bear their historical names. Other named characters
@@ -98,14 +98,14 @@ const CONTENT = {
       as the Customs come to suspect you; if it reaches 100, prosecution follows.
       <strong>Trust</strong> is your standing with your confederates; if it drops to
       zero, they will betray you. </p>
-      <p> The game was coded using Claude Code and the images generated using DALL-E 2, with prompts based on period descriptions and paintings, and a slightly retro, bitmapped aesthetic. </p>
+      <p> The game was coded using Claude Code and the images generated using DALL-E with prompts based on period descriptions and paintings, and a slightly retro, bitmapped aesthetic. </p>
 
       <hr style="border:none;border-top:1px dashed var(--ink-soft);margin:14px 0;" />
 
       <h4 style="font-family:var(--font-sc);font-size:16px;color:var(--wax-red);margin:6px 0 6px;">Version History</h4>
       <p style="font-family:var(--font-sc);font-size:14px;color:var(--ink-soft);margin:0 0 4px;">Current version: <strong>0.5 BETA</strong> (17 May 2026).</p>
       <ul style="margin:4px 0 4px 18px;font-size:15px;line-height:1.45;">
-        <li><strong>v.5 BETA</strong> — First Beta version. Five acts, two meters, Reflection card.</li>
+        <li><strong>v.5 BETA</strong> — First Beta version. Five acts.</li>
       </ul>
     `
   },
