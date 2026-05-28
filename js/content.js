@@ -72,7 +72,7 @@ const CONTENT = {
       body: [
         'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high; the temptation to evade them is higher. Whole communities along the southern coast of England live by what contemporaries call **the running trade**.',
         'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period. Their organization was real, and so was their fate.',
-        { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> — how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> &mdash; your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
+        { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> — how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> — your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
         'Every choice that moves a meter will be followed by a brief *Reflection* — the historical reasoning behind the consequence.'
         
       ],
@@ -86,10 +86,10 @@ const CONTENT = {
       John Hatch and John Sellers, ran a substantial cross-Channel smuggling syndicate
       until their clerk Isaac Poulsum turned King's evidence.</p>
       <p>The goal of the game is to learn about the dynamics of eighteenth-century smuggling and its underworld.</p>
-      <p>The mechanics &mdash; debenture frauds, "running" cargoes by moonlight,
+      <p>The mechanics — debenture frauds, "running" cargoes by moonlight,
       under-declarations, bribery of land-waiters, riding officers patrolling the coast,
       informations <em>ad rem</em> and <em>ad personam</em> in the Court of Exchequer
-      &mdash; are drawn from the 1733 House of Commons <em>Report on the Frauds and
+      — are drawn from the 1733 House of Commons <em>Report on the Frauds and
       Abuses in the Customs</em> and the reports of contemporary writers.</p>
       <p>The gang's three leaders bear their historical names. Other named characters
       (Cooper the master, Hodgkin the keeper, Reeve and Henwood the Customs officers,
@@ -105,7 +105,7 @@ const CONTENT = {
       <h4 style="font-family:var(--font-sc);font-size:16px;color:var(--wax-red);margin:6px 0 6px;">Version History</h4>
       <p style="font-family:var(--font-sc);font-size:14px;color:var(--ink-soft);margin:0 0 4px;">Current version: <strong>0.5 BETA</strong> (17 May 2026).</p>
       <ul style="margin:4px 0 4px 18px;font-size:15px;line-height:1.45;">
-        <li><strong>v.5 BETA</strong> &mdash; First Beta version. Five acts, two meters, Reflection card.</li>
+        <li><strong>v.5 BETA</strong> — First Beta version. Five acts, two meters, Reflection card.</li>
       </ul>
     `
   },
@@ -269,7 +269,7 @@ const CONTENT = {
       image: 'assets/images/act1_customs.jpg',
       caption: 'A clerk at his desk, a searcher in conversation with a master of vessels.',
       body: [
-        'You stand a quarter of an hour at the steps, watching. A *searcher* &mdash; the officer who attends a vessel out &mdash; takes a paper from the master of a Dutch hoy and sets his mark upon it. A boy fetches him beer.',
+        'You stand a quarter of an hour at the steps, watching. A *searcher* — the officer who attends a vessel out — takes a paper from the master of a Dutch hoy and sets his mark upon it. A boy fetches him beer.',
         'You learn this much: the searchers here are three, of whom one (a Mr. **Reeve**) is much given to "consideration", and another (a Mr. **Henwood**) is not. The third is old and asleep.'
       ],
       onEnter: (s) => { s.flags.knowsOfficers = true; },
@@ -277,7 +277,7 @@ const CONTENT = {
         { text: 'Note these names; turn for the quay.',
           target: '1.5_meet_cooper',
           effects: { trust: +3 },
-          lesson: 'Identifying the corrupt and honest officers in a port was hard intelligence. The smuggler David Boyse is reported to have kept a private list of which Customs men in each port could be "compounded with" and which could not.'
+          lesson: 'Identifying the corrupt and honest officers in a port required diligence and careful questions. The smuggler David Boyse is reported to have kept a private list of which Customs men in each port could be "compounded with" and which could not.'
         }
       ]
     },
@@ -289,9 +289,9 @@ const CONTENT = {
       caption: 'A sloop of forty tons, rigged for the Channel.',
       body: [
         'A man with hands like split firewood is making fast a coil of rope. He glances up; his face does not change.',
-        { dlg: 'Tom Cooper, master', text: ' you are late, and uglier than yesterday, but you are aboard. Mr. Boyse sends his particular regards. He says the freight is debentured to Dunkirk &mdash; ' },
+        { dlg: 'Tom Cooper, master', text: ' you are late, and uglier than yesterday, but you are aboard. Mr. Boyse sends his particular regards. He says the freight is debentured to Dunkirk — ' },
         { dlg: 'Tom Cooper, master', text: ' though we may find the wind sets rather toward St Helier in the Channel Islands of an evening. Do you take my meaning?' },
-        'You take his meaning. The cargo is *tobacco* &mdash; declared for export, the duty drawn back, and shortly to be landed again upon some quiet beach in *Jersey* and shipped home as if it had never been British. This was an old and common fraud.'
+        'You take his meaning. The cargo is *tobacco* — declared for export, the duty drawn back, and shortly to be landed again upon some quiet beach in *Jersey* and shipped home as if it had never been British. This was an old and common fraud.'
       ],
       choices: [
         { text: 'Speak as one who knows his business: ask after the cocket and the bond.',
@@ -339,7 +339,7 @@ const CONTENT = {
         text: 'Wind: *south-westerly*, fresh and steady. Tide: half-ebb, setting south. Glass: rising. The Dolphin makes seven knots upon a broad reach, course south by east for the Channel Islands. A waning moon will not rise these three hours; the stern lantern is the only light upon the sea.'
       },
       body: [
-        'The wind serves; the sloop heels and the lantern at the stern throws its yellow shudder upon the wake. Cooper is at the tiller. The boy &mdash; a thin lad called **Ned**, no more than fifteen &mdash; brings up small beer and a wedge of ship\'s cheese.',
+        'The wind serves; the sloop heels and the lantern at the stern throws its yellow shudder upon the wake. Cooper is at the tiller. The boy — a thin lad called **Ned**, no more than fifteen — brings up small beer and a wedge of ship\'s cheese.',
         'You have hours before St Helier on the Isle of Jersey. There are matters to consider.'
       ],
       choices: [
@@ -530,7 +530,7 @@ const CONTENT = {
           effects: { exposure: -4, trust: +1 },
           lesson: 'Hiding behind the Owers — a shoal off Selsey Bill — was the sober choice. The cutter could not work the inshore water, and a smuggler who ran for the offing lived to land another night. Patience was a smuggler\'s discipline.'
         },
-        { text: 'Crowd on sail and make straight for Pevensey beach &mdash; outrun him.',
+        { text: 'Crowd on sail and make straight for Pevensey beach — outrun him.',
           target: '2.5_landing',
           effects: { exposure: +6, trust: +5 },
           lesson: 'Running before the Customs at full canvas was glorious to watch and ruinous if the wind shifted. Cooper and the boy will love you for the gamble; the Customs will mark you for it. Boyse made his name on such runs, and his prosecution on them too.'
@@ -555,7 +555,7 @@ const CONTENT = {
         'And then the lantern of a *riding officer* shows, half a mile down the beach, and a voice cries out the King\'s name.'
       ],
       choices: [
-        { text: 'Order the batsmen to give him a thrashing &mdash; nothing fatal &mdash; and run.',
+        { text: 'Order the batsmen to give him a thrashing — nothing fatal — and run.',
           target: '2.6_aftermath',
           effects: { exposure: +20, trust: +6, flags: { officerHurt: true } },
           lesson: 'Violence against riding officers was the line that turned smuggling into criminal felony. The 1736 *Smuggling Act* was passed in direct response to the rising count of officers beaten or shot on the south coast. Your gang loves boldness; the gallows in time will love it too.'
@@ -603,7 +603,7 @@ const CONTENT = {
       caption: 'A letter sealed in red wax, the impression a stag\'s head couped.',
       body: [
         'In London, between one tavern and another, you are handed a letter. It is from **David Boyse**, by his clerk Pulsom\'s hand:',
-        { dlg: 'Boyse, by his clerk', text: '{{name}} — You are now sufficiently in our trust. There is a matter of three hundred chests of tea and forty pieces of Bordeaux to come into Poole upon the *Prosperity*, by ordinary course. The under-declaration is to be your particular charge. Mr. Reeve at the Custom House is our man. Mr. Henwood is not. The cocket is enclosed. &mdash; Boyse.' },
+        { dlg: 'Boyse, by his clerk', text: '{{name}} — You are now sufficiently in our trust. There is a matter of three hundred chests of tea and forty pieces of Bordeaux to come into Poole upon the *Prosperity*, by ordinary course. The under-declaration is to be your particular charge. Mr. Reeve at the Custom House is our man. Mr. Henwood is not. The cocket is enclosed. — Boyse.' },
         'This is the third species of fraud described in the *Report*: not running goods upon the beach, but landing them at the legal quay and *under-declaring* what is in the hold.'
       ],
       choices: [
@@ -998,7 +998,7 @@ const CONTENT = {
         { dlg: 'David Boyse', text: 'Five things may happen in the next quarter of an hour. Choose carefully, sir. I should be sorry to have you killed; sorrier still, perhaps, to be killed myself.' }
       ],
       choices: [
-        { text: 'Betray him to the Customs at the door &mdash; for the £500 informer\'s reward.',
+        { text: 'Betray him to the Customs at the door — for the £500 informer\'s reward.',
           target: '5.3_betray',
           effects: { trust: -60, exposure: -10 },
           lesson: 'Selling Boyse in his own parlour was the most absolute breach the running trade knew. The £500 reward bought the Crown\'s gratitude — and forfeited every confederate at once. *Trust falls to nothing*: in the language of the trade, you are now a man whose word no smuggler will take, in any port from Falmouth to the Forth. Defoe observed of such informers that they were "the best paid and least loved of all His Majesty\'s servants".'
@@ -1312,7 +1312,7 @@ const CONTENT = {
       caption: 'A long flight of stone stairs; a porter at the head; a clerk with two pens.',
       audio: 'assets/audio/scene_5_7_customs_stairs.mp3',  // hobnails on stone, distant Thames bells
       body: [
-        'You leave Mr. Boyse\'s parlour with a civil bow and walk, by coach and stage, the hundred and twelve miles to London. You take a chamber off Tower Hill. You shave. You write, in a careful hand, a letter to the **Solicitor for the Customs**, requesting an audience &mdash; not as an informer in the ordinary sense, but as a *practitioner of the trade desirous of His Majesty\'s commission*.',
+        'You leave Mr. Boyse\'s parlour with a civil bow and walk, by coach and stage, the hundred and twelve miles to London. You take a chamber off Tower Hill. You shave. You write, in a careful hand, a letter to the **Solicitor for the Customs**, requesting an audience — not as an informer in the ordinary sense, but as a *practitioner of the trade desirous of His Majesty\'s commission*.',
         'You are received, on the third day, by the Solicitor and by a sober gentleman introduced as **Mr. Carkesse, Comptroller of the King\'s Cocketts**. They listen, with a long professional patience, to what you have to say.',
         { dlg: 'The Solicitor for the Customs', text: 'Mr. {{name}}. The Crown has from time to time taken into its service men who have stood, formerly, against its revenues. Such men can be useful, sir, if they bring with them not only knowledge but also discipline. You will be examined. You will be sworn. You will not be paid until you have proved yourself. Do you accept?' }
       ],
@@ -1456,8 +1456,8 @@ const CONTENT = {
       audio: 'assets/audio/scene_5_8_boyse_drawer.mp3',  // a key, a drawer, the same low clock
       body: [
         { dlg: 'David Boyse', text: 'A last run, then. Yes. There is one, Mr. {{name}}. Not for brandy nor for tea, but for a man. A gentleman of Scotland, who has been five years in the company of the *Chevalier de St. George* at Rome, lately at Bordeaux upon his particular business. He is to be brought into England by a coast at which the Customs do not expect him.' },
-        { dlg: 'David Boyse', text: 'I should not put this work upon you if I did not trust you above the common sort. The *passenger* is a Mr. **Alexander Forbes**, late of Pitsligo. The reward is two hundred guineas in hand and the matter of Crouch wiped clean between us, sir. Will you do it?' },
-        'You understand at once that this is not the simple piece of smuggling Boyse pretends. *Jacobite* sympathies are the open secret of his counting house. To bring Mr. Forbes ashore is to put yourself, knowingly, into the political traffic between Rome, Paris, and the disaffected gentry of north-east Scotland.'
+        { dlg: 'David Boyse', text: 'I should not put this work upon you if I did not trust you above the common sort. The *passenger* is a Ms. **Arabella **, late of Pitsligo. The reward is two hundred guineas in hand and the matter of Crouch wiped clean between us, sir. Will you do it?' },
+        'You understand at once that this is not the simple piece of smuggling Boyse pretends. *Jacobite* sympathies are the open secret of his counting house. To bring Ms.  ashore is to put yourself, knowingly, into the political traffic between Rome, Paris, and the disaffected gentry of north-east Scotland.'
       ],
       choices: [
         { text: 'Agree, asking only the conditions of the run — the coast, the master, the date.',
@@ -1480,7 +1480,7 @@ const CONTENT = {
       caption: 'A man in a plain blue coat; very quiet eyes; a French servant who is not French.',
       audio: 'assets/audio/scene_5_8_bordeaux.mp3',  // a Gascon street, a church bell at sext
       body: [
-        'You meet Ms. **Arabella Murray**, of Pitsligo, at the Sign of the Three Pilgrims in the rue Sainte-Catherine at Bordeaux. He is thirty-eight years old, plain in his dress, courteous in his speech, and very tired. He has been on the road since the feast of St. Andrew. He carries a single portmanteau, a sword he does not draw, and a sealed packet of papers which he will not let out of his sight.',
+        'You meet Ms. **Arabella Murray**, of Pitsligo, at the Sign of the Three Pilgrims in the rue Sainte-Catherine at Bordeaux. She is thirty-eight years old, plain in his dress, courteous in her speech, and very tired. She has been on the road since the feast of St. Andrew. She carries a single portmanteau and a sealed packet of papers which she will not let out of her sight.',
         { dlg: 'Ms. Murray', text: '{{name}}, you have my entire confidence and my entire indebtedness. I shall require to be brought ashore, by your contrivance, at any quiet beach in the north-east. *Banffshire* would suit me, but I take what conveyance is given. I am to be conducted to Edinburgh, then to *Lochiel*, and then to where God wills.' },
         'He gives you his hand. The hand is steady. The fingers are stained, lightly, with the same Indian ink that an exiled court uses for its correspondence with its agents.',
         'Boyse\'s instruction is for a landing at Sussex — Pevensey or Cuckmere — to be followed by an overland transit to Newcastle. You see at once a difficulty. The Sussex coast is watched. The northern coasts are not.'
@@ -1510,17 +1510,17 @@ const CONTENT = {
         text: 'Wind: *south-westerly*, fair and steady. Tide: setting north. Glass: holding. The Dolphin runs eight knots upon a quartering wind. Her papers declare cognac for Holland; her cargo is a man with a sealed packet who reads Latin by the binnacle lamp. No moon for the next three nights.'
       },
       body: [
-        'The wind serves. Cooper, who has not been told who the passenger is (only that he is no man\'s business but the gang\'s), keeps a respectful distance from the cabin. Mr. Forbes reads Cicero in the watch below and asks the boy Ned, with grave courtesy, after the trim of the topsail.',
+        'The wind serves. Cooper, who has not been told who the passenger is (only that he is no man\'s business but the gang\'s), keeps a respectful distance from the cabin. Ms. Murray reads Cicero in the watch below and asks the boy Ned, with grave courtesy, after the trim of the topsail.',
         'On the fourth day out, in the latitude of the Lizard, a topsail cutter shows on the weather quarter. It is not the *Greyhound*; it is a vessel new to you, three-masted, perhaps a sloop-of-war out of Plymouth on the King\'s service.',
         { dlg: 'Tom Cooper', text: 'She has us in the offing, sir. If she comes near enough to hail, the papers will pass — the cargo, sir, *will not*. What does the passenger weigh, {{name}}, in your conscience?' }
       ],
       choices: [
-        { text: 'Hold the course. Trust the papers. Treat Ms. Murray as honest a traveller as the Dolphin ever carried.',
+        { text: 'Hold the course. Trust the papers. Treat Ms.  as honest a traveller as the Dolphin ever carried.',
           target: '5.8c_jacobite_landing',
           effects: { exposure: +6, trust: +4 },
           lesson: 'Cool nerve in a hailing was a smuggler\'s essential discipline. Most boardings were brief and concerned only with the manifest; the careful runner travelled with papers that would withstand twenty minutes\' interrogation. A passenger who could pass as a clerk had been pre-arranged in dress, demeanour, and small biographical detail.'
         },
-        { text: 'Sink Ms. Murray\'s packet, weighted, on a buoy; recover it after the landing.',
+        { text: 'Sink Ms. \'s packet, weighted, on a buoy; recover it after the landing.',
           target: '5.8c_jacobite_landing',
           effects: { exposure: -6, trust: 0, flags: { jacobitePacketSunk: true } },
           lesson: 'Sinking papers — like sinking tubs — was the smuggler\'s way of preserving evidence from inspection. The packet, weighted and marked with a buoy, would survive an inshore boarding; the *passenger himself* would still need to pass an examination. The political cargo, however, was the papers more than the man.'
@@ -1540,8 +1540,8 @@ const CONTENT = {
       caption: 'A boat in the surf; a passenger in the stern; a horse waiting under a thorn-tree.',
       audio: 'assets/audio/scene_5_8_landing.mp3',  // surf, an oar dipping, a horse cropping turf
       body: [
-        'The landing is made — by your route, at your hour, in your weather. Ms. Murray steps from the Dolphin\'s gig into knee-deep surf with the dignity of a woman stepping into a pew. She shakes your hand. She gives you, from the inside of her coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
-        { dlg: 'Arabella Murray', text: '{{name}}. I shall not forget this service. There is a Cause to which those of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
+        'The landing is made — by your route, at your hour, in your weather. Ms.  steps from the Dolphin\'s gig into knee-deep surf with the dignity of a woman stepping into a pew. She shakes your hand. She gives you, from the inside of her coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
+        { dlg: 'Arabella ', text: '{{name}}. I shall not forget this service. There is a Cause to which those of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
         'She turns. She walks up the shingle. She is met, beyond the high-water mark, by a man in a blue coat. They mount; they ride inland; they are gone.',
         'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *insignia of the House of Stuart*.'
       ],
