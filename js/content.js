@@ -160,7 +160,7 @@ const CONTENT = {
       image: 'assets/images/act1_inn.jpg',
       caption: 'A loose plank, lifted with the point of a knife.',
       body: [
-        'A board comes up easy under your fingers, its nails withdrawn before. Beneath, wrapped in oiled cloth, lies a small *purse of guineas* — too heavy for an honest pocket — and beside it a folded paper with a customs-house seal and a *pocket ledger*, much-thumbed.',
+        'A board comes up easily under your fingers, its nails withdrawn before. Beneath, wrapped in oiled cloth, lies a small *purse of guineas* — too heavy for an honest pocket — and beside it a folded paper with a customs-house seal and a *pocket ledger*, much-thumbed.',
         'The ledger, opened at random, gives initials and sums: "J.S. — 200 lb. Virginia, of Dunkirk run, 8/—". And again, "J.H. — coast bond, 73 cwt., debentured 12 Feb."'
       ],
       choices: [
@@ -183,7 +183,7 @@ const CONTENT = {
       image: 'assets/images/act1_inn.jpg',
       caption: 'A note tucked into the pillow, its corners brown with sweat.',
       body: [
-        'Folded and refolded, a *note* in another hand: "At the Crown — Tuesday — ask for J. S. by the back stair." Beside it lies a *kerchief* of cheap printed cotton, marked with a deep brown stain. The smell, when you raise it, is unmistakable: Virginia leaf.',
+        'Folded and refolded, a *note* in another hand: "At the Crown — Tuesday — ask for J. S. by the back stair." Beside it lies a *kerchief* of cheap printed cotton, marked with a deep brown stain. The smell, when you raise it, is unmistakable: Virginia leaf tobacco.',
         'Whoever you are, you were waiting upon some person at this inn. Whoever drugged you (if drugged you were) did not think you would wake.'
       ],
       onEnter: (s) => { s.flags.searchedPillow = true; },
@@ -205,15 +205,15 @@ const CONTENT = {
       caption: 'The keeper of the Crown — a woman who has seen worse than you.',
       body: [
         'Mrs. Hodgkin meets you on the landing with a candle she does not need. She looks you over as a chandler looks over a salt-damp coil of rope, and seems to weigh you light.',
-        { dlg: 'Mrs. Hodgkin', text: 'Mr. {{name}}, sir. You are awake at last. Your friends were here yesternight. They left word that *the Dolphin* sails on the ebb, and that you were to be aboard her, sober or no. They paid the reckoning.' },
-        { dlg: 'Mrs. Hodgkin', text: 'I asked no questions when they brought you up the stairs. I ask none now. But the wind is fair, and the tide will not wait upon any gentleman\'s headache.' }
+        { dlg: 'Mrs. Hodgkin', text: 'You are awake at last. Your friends were here yesternight. They left word that *the Dolphin* sails on the ebb, and that you are to be aboard her, sober or no. They paid the reckoning.' },
+        { dlg: 'Mrs. Hodgkin', text: 'I asked no questions when they brought you up the stairs. I ask none now. But the wind is fair, and the tide will not wait upon anyone\'s headache.' }
       ],
       choices: [
         { text: 'Thank her plainly and leave a guinea on the sideboard.',
           target: '1.4_to_quay',
           effects: { trust: +3, exposure: -2 },
           requires: { item: 'purse' },
-          lesson: 'Innkeepers in port towns were essential intermediaries. A few coins well-placed bought silence about your face and your traffic; the same guinea, withheld, was a small savings that could send you to gaol later by way of a deposition.'
+          lesson: 'Innkeepers in port towns were essential intermediaries. A few coins well-placed bought information; the same guinea, withheld, was a small savings that could leave you ignorant of danger or opportunity.'
         },
         { text: 'Demand to know who brought you in.',
           target: '1.3a_demand'
@@ -230,14 +230,14 @@ const CONTENT = {
       image: 'assets/images/act1_innkeeper.jpg',
       caption: 'No keeper of an inn at Poole answers such questions.',
       body: [
-        { dlg: 'Mrs. Hodgkin', text: 'Sir, I keep an inn. I do not keep men\'s names. If I did, I should soon keep neither inn nor head.' },
+        { dlg: 'Mrs. Hodgkin', text: 'I keep an inn. I do not keep names. If I did, I should soon keep neither inn nor head.' },
         'She turns and is gone before you can press her further. Whatever she knows, she will not part with it for a hard word.'
       ],
       choices: [
         { text: 'Leave for the quay.',
           target: '1.4_to_quay',
           effects: { exposure: +5 },
-          lesson: 'Pressing an innkeeper for names broke the unwritten compact of the smuggling port. Word travelled. Officers took note of strangers who asked too many questions, and one such word reached the Searcher\'s ear at Poole within the hour.'
+          lesson: 'Pressing an innkeeper for names broke the unwritten compact of the smuggling port. Word travelled. Officers took note of strangers who asked too many questions, and one such word reached the Searcher\'s ear at Poole within the day.'
         }
       ]
     },
@@ -250,7 +250,7 @@ const CONTENT = {
       audio: 'assets/audio/scene_1_4_quay.mp3',  // hawkers, cordage, harbour bells
       body: [
         'The eighteenth-century writer Daniel Defoe, who passed through this town not three years since, called Poole *"a considerable seaport... here were a good number of ships fitted out every year to the Newfoundland fishing."* He did not write what every Pooleman knows: that more brandy comes ashore here in a fortnight than the Customs see in a twelvemonth.',
-        'You walk the lanes between the chandlers and the rope-walks. A *tide-waiter* in the service of the Customs in his blue coat passes without a glance — he is paid by the day to watch a tide that brings him nothing. Beyond him, the Custom House keeps its prim pediment turned to the sea.',
+        'You walk the lanes between the chandlers and the rope-walks. A *tide-waiter* in the service of the Customs in his blue coat passes without a glance. Beyond him, the Custom House keeps its prim pediment turned to the sea.',
         'A sloop is taking her last casks aboard at the inner basin. Her name, in green paint upon the transom, is *Dolphin*.'
       ],
       choices: [
@@ -301,8 +301,8 @@ const CONTENT = {
         },
         { text: 'Say plainly that you have lost your memory and ask what part you play.',
           target: '1.5a_honest',
-          effects: { trust: -12 },
-          lesson: 'Smuggling crews abhorred uncertainty in their own. A man who did not know himself was a liability — likely to confess, likely to break under questioning. Cooper marks you as such, and Boyse will hear of it.'
+          effects: { trust: -15 },
+          lesson: 'Smuggling crews abhorred uncertainty in their own. A man confused was a liability — likely to confess, likely to break under questioning. Cooper marks you as such, and Boyse will hear of it.'
         },
         { text: 'Say nothing; nod and go below.',
           target: '1.6_passage'
@@ -323,8 +323,8 @@ const CONTENT = {
       choices: [
         { text: 'Go below.',
           target: '1.6_passage',
-          effects: { exposure: +5 },
-          lesson: 'A confused man on a smuggling deck is a watched man. Cooper will keep his eye upon you until he has answers; the watch becomes a story; the story may travel ashore. Exposure rises whether the Customs are present or not.'
+          effects: { trust: -10 },
+          lesson: 'A confused man on a smuggling deck is a watched man. Cooper will keep his eye upon you until he has answers.'
         }
       ]
     },
@@ -339,14 +339,14 @@ const CONTENT = {
         text: 'Wind: *south-westerly*, fresh and steady. Tide: half-ebb, setting south. Glass: rising. The Dolphin makes seven knots upon a broad reach, course south by east for the Channel Islands. A waning moon will not rise these three hours; the stern lantern is the only light upon the sea.'
       },
       body: [
-        'The wind serves; the sloop heels and the lantern at the stern throws its yellow shudder upon the wake. Cooper is at the tiller. The boy — a thin lad called **Ned**, no more than fifteen — brings up small beer and a wedge of ship\'s cheese.',
+        'The wind serves; the sloop heels and the lantern at the stern throws its yellow light upon the wake. Cooper is at the tiller. The boy — a thin lad called **Ned**, no more than fifteen — brings up small beer and a wedge of ship\'s cheese.',
         'You have hours before St Helier on the Isle of Jersey. There are matters to consider.'
       ],
       choices: [
-        { text: 'Help Ned set up the running gear; show willing.',
+        { text: 'Help Ned set up the running gear; show willingness to guide him.',
           target: '1.7_jersey_arrival',
           effects: { trust: +5 },
-          lesson: 'The smuggling sloop ran on the cooperation of every hand. Master and clerk who declined the rough work were resented, then suspected. Sharing labour was an investment in your shipmates\' loyalty.'
+          lesson: 'The smuggling sloop ran on the cooperation of every hand. Master and clerk who declined rough work were resented, then suspected. Sharing labour was an investment in your shipmates\' loyalty.'
         },
         { text: 'Read the ledger again by the binnacle lamp.',
           target: '1.6a_ledger',
@@ -354,8 +354,8 @@ const CONTENT = {
         },
         { text: 'Stay below, out of mind and out of weather.',
           target: '1.7_jersey_arrival',
-          effects: { trust: -5 },
-          lesson: 'A captain out of sight undermines the trust of his crew.'
+          effects: { trust: -8 },
+          lesson: 'A smuggler keeping to himself undermines the trust of his crew.'
         }
       ]
     },
@@ -416,13 +416,13 @@ const CONTENT = {
       body: [
         'The bargain is struck. You return aboard the Dolphin (or a quicker boat, or none at all, depending upon your choice) with the same cargo that left Poole the day before yesterday — but it is now, in the eye of the law, a Jersey cargo, and worth a great deal more than it cost.',
         'On the homeward beat Cooper stands a long while at the rail without speaking. When he speaks, it is with a kind of grudging warmth.',
-        { dlg: 'Tom Cooper', text: 'You will do, Mr. {{name}}, you will do. Mr. Boyse wants you in Sussex next week. Brandy out of Cherbourg. Honest brandy, you might say.' }
+        { dlg: 'Tom Cooper', text: 'You will do, {{name}}, you will do. Mr. Boyse wants you in Sussex next week. Brandy out of Dunkirk. Honest brandy, you might say.' }
       ],
       onEnter: (s) => { s.flags.actOneDone = true; },
       choices: [
         { text: 'To Sussex, and the next voyage.',
           target: '2.1_cherbourg',
-          effects: { trust: +3 },
+          effects: { trust: +5 },
           lesson: 'Successful first voyages purchased trust by the inch. Smuggling syndicates assessed new men over many runs before sharing the most valuable secrets — the names of corrupt officers, the locations of safehouses inland, the identities of London receivers.'
         }
       ]
@@ -432,12 +432,12 @@ const CONTENT = {
 
     '2.1_cherbourg': {
       act: 2,
-      title: 'Cherbourg — A Tavern by the Mole',
+      title: 'Dunkirk — A Tavern by the Mole',
       image: 'assets/images/act2_cherbourg.jpg',
       caption: 'A French port, much used by the running trade for brandy and tea.',
       body: [
-        'The Channel crossing is short and uneventful. At Cherbourg you put up at the Sign of the Three Cranes, where a Norman merchant by the name of **Pierre Lebec** does the business of half the south-coast smugglers without seeming to do any business at all.',
-        { dlg: 'Pierre Lebec', text: 'Monsieur {{name}}. Monsieur Boyse sends his regards. The brandy is ready — one hundred and twenty ankers, very fine, of the brandies of Charente in France. There is also tea, gunpowder green, that I have set aside for those who can pay. And silks, if you have a mind to be bold.' },
+        'The Channel crossing is short and uneventful. At Dunkirk you put up at the Sign of the Three Cranes, where a Norman merchant by the name of **Pierre Lebec** does the business of half the south-coast smugglers without seeming to do any business at all.',
+        { dlg: 'Pierre Lebec', text: 'Monsieur {{name}}. Monsieur Boyse sends his regards. The brandy is ready — one hundred and twenty ankers, very fine, of the brandies of Cognac in France. There is also tea, gunpowder green, that I have set aside for those who can pay. And silks, if you have a mind to be bold.' },
         
       ],
       choices: [
@@ -454,7 +454,7 @@ const CONTENT = {
         { text: 'A small parcel of silks only — light, dear, and damnable to be caught with.',
           target: '2.2_load',
           effects: { flags: { cargo: 'silks' }, addItem: 'receipt', exposure: +2, trust: -5 },
-          lesson: 'Silks were the most concealable cargo and bore prohibitive duties. Confederates who wanted bulk and reliable buyers for higher volumes thought silk-runners reckless.'
+          lesson: 'Silks were the most concealable cargo and bore prohibitive duties. But they were difficult to source in quantity. Confederates who wanted bulk and reliable buyers for higher volumes thought silk-runners small-scale.'
         }
       ]
     },
@@ -490,7 +490,7 @@ const CONTENT = {
       audio: 'assets/audio/scene_2_3_storm.mp3',   // gale in rigging, rain on deck
       sailing: {
         title: 'Cherbourg to Pevensey — under sail',
-        text: 'Wind: *north-westerly*, freshening; the glass is falling. Tide: flood, against. The Dolphin runs eight knots north-north-east under a deep-reefed mainsail. Visibility a league and lessening. The ankers are double-lashed below; the cutter *Greyhound* is reported between Beachy Head and Pevensey.'
+        text: 'Wind: *north-westerly*, freshening; the glass is falling. Tide: flood, against. The Dolphin runs eight knots north-north-east under a deep-reefed mainsail. Visibility is a league and lessening. The ankers are double-lashed below; the cutter *Greyhound* is reported between Beachy Head and Pevensey.'
       },
       body: [
         'You are eight leagues off Cape Barfleur when the squall comes on. The sloop heels until the lee gunwale is a-wash. Cooper, with no expression at all, gives the helm half a point free.',
@@ -499,7 +499,7 @@ const CONTENT = {
       choices: [
         { text: 'Go below at once and lash the tubs yourself.',
           target: '2.4_sighting',
-          effects: { trust: +6 },
+          effects: { trust: +8 },
           lesson: 'Sea-courage in a squall counted for everything in the running trade. Crews remembered, for years, who went below into a working hold and who did not. Such moments were the hidden currency of the smuggling economy: the *trust* on which a verbal contract for thousands of pounds rested.'
         },
         { text: 'Send Ned, and hold the deck.',
@@ -509,8 +509,8 @@ const CONTENT = {
         },
         { text: 'Cut the lashing of the loose anker and let the sea have it; save the rest.',
           target: '2.4_sighting',
-          effects: { exposure: -4, trust: -8 },
-          lesson: 'A lost anker was lost profit — and a half-anker of brandy, washed ashore, gave a riding officer a tale to write up in his weekly return. Smugglers preferred to risk a vessel rather than throw cargo, because evidence on the beach travelled to the Custom House faster than evidence at the bottom of the Channel.'
+          effects: { exposure: -4, trust: -12 },
+          lesson: 'A lost anker was lost profit — and a half-anker of brandy, washed ashore, gave a riding officer a tale to write up in his weekly return. Smugglers preferred to risk a vessel rather than throw cargo and its profits.'
         }
       ]
     },
@@ -522,22 +522,22 @@ const CONTENT = {
       caption: 'A revenue-cutter, two leagues to windward.',
       body: [
         'The squall passes. With first light comes a sail upon the weather quarter — a topsail cutter, low and rakish, the sort the Customs commission to keep the coast. She has not yet seen you, but the wind is hers.',
-        { dlg: 'Tom Cooper', text: 'That is the *Greyhound*, out of Newhaven. Captain **Pigram**. He took the Whitstable men last summer and set the Hawkhurst boys to mourn three weeks together. We must lose him before we close the shore.' }
+        { dlg: 'Tom Cooper', text: 'That is the *Greyhound*, out of Newhaven. Captain **Nathaniel Pigram**. He took the Whitstable men last summer and set some Frensh smugglers to mourn three weeks together. We must lose him before we close the shore.' }
       ],
       choices: [
         { text: 'Run for the offing and lie to behind the Owers, hoping he passes.',
           target: '2.5_landing',
           effects: { exposure: -4, trust: +1 },
-          lesson: 'Hiding behind the Owers — a shoal off Selsey Bill — was the sober choice. The cutter could not work the inshore water, and a smuggler who ran for the offing lived to land another night. Patience was a smuggler\'s discipline.'
+          lesson: 'Hiding behind the Owers — a shoal off Selsey Bill — was the sober choice. The cutter would not work the inshore water, and a smuggler who ran for the offing lived to land another night. Patience was a smuggler\'s discipline.'
         },
         { text: 'Crowd on sail and make straight for Pevensey beach — outrun him.',
           target: '2.5_landing',
-          effects: { exposure: +6, trust: +5 },
-          lesson: 'Running before the Customs at full canvas was glorious to watch and ruinous if the wind shifted. Cooper and the boy will love you for the gamble; the Customs will mark you for it. Boyse made his name on such runs, and his prosecution on them too.'
+          effects: { exposure: +8, trust: +5 },
+          lesson: 'Running before the Customs at full canvas was glorious to watch and ruinous if the wind shifted. Cooper and the boy will love you for the gamble; the Customs will mark you for it.'
         },
         { text: 'Sink the most damning tubs at the Royal Sovereign buoy, mark them, recover at leisure.',
           target: '2.5_landing',
-          effects: { exposure: -8, trust: -4, flags: { sunkTubs: true } },
+          effects: { exposure: -8, trust: -10, flags: { sunkTubs: true } },
           lesson: 'Sinking weighted tubs and recovering them later — by "creeping" with grapnels — was a recognised smuggler\'s tactic. It avoided seizure, but the gang counted the cost in lost cargo and crew time, and Boyse paid only on what was landed.'
         }
       ]
@@ -589,7 +589,7 @@ const CONTENT = {
         { text: 'Northward, to London — the goods to be disposed of through Mr. Boyse\'s factor.',
           target: '3.1_summons',
           effects: { trust: +2 },
-          lesson: 'Inland networks of farmers, carriers and London receivers, inlcuding druggists and innkeepers, turned smuggled goods into cash. Boyse\'s factor was a respectable wine-merchant in the City who paid in bills of exchange — no different in form from any merchant\'s account, except that it was illegal at every step.'
+          lesson: 'Inland networks of farmers, carriers and London receivers, inlcuding druggists and innkeepers, turned smuggled goods into cash. They were the distribution network of the smuggling trade.'
         }
       ]
     },
@@ -602,9 +602,9 @@ const CONTENT = {
       image: 'assets/images/act3_letter.jpg',
       caption: 'A letter sealed in red wax, the impression a stag\'s head couped.',
       body: [
-        'In London, between one tavern and another, you are handed a letter. It is from **David Boyse**, by his clerk Pulsom\'s hand:',
+        'In London, between one tavern and another, you are handed a letter. It is from **David Boyse**, by his clerk Isaac Pulsom\'s hand:',
         { dlg: 'Boyse, by his clerk', text: '{{name}} — You are now sufficiently in our trust. There is a matter of three hundred chests of tea and forty pieces of Bordeaux to come into Poole upon the *Prosperity*, by ordinary course. The under-declaration is to be your particular charge. Mr. Reeve at the Custom House is our man. Mr. Henwood is not. The cocket is enclosed. — Boyse.' },
-        'This is the third species of fraud described in the *Report*: not running goods upon the beach, but landing them at the legal quay and *under-declaring* what is in the hold.'
+        'This is an important species of fraud: not running goods upon the beach, but landing them at the legal quay and *under-declaring* what is in the hold.'
       ],
       choices: [
         { text: 'To Poole, then.', target: '3.2_rendezvous' }
@@ -621,19 +621,19 @@ const CONTENT = {
         text: 'Wind: *light airs from the west*, the sea near mirror-flat. Tide: slack water. The Dolphin lies-to under main alone, two leagues south of the Needles, awaiting the topsails of the Bordeaux trader *Prosperity*. No moon; a slow drift of high cloud; lanterns shielded against any chance sail.'
       },
       body: [
-        'You meet the *Prosperity*, a Bordeaux trader, in the Channel south of the Needles. She carries (by her papers) only forty pieces of wine. In her hold are also the chests of tea, in a false bulkhead aft.',
+        'You meet the *Prosperity*, a regular trader to Bordeaux in France, in the Channel south of the Needles. She carries (by her papers) only forty pieces of wine. In her hold are also the chests of tea, in a false bulkhead aft.',
         'It falls to you to draw the manifest you will present at Poole — how much shall be declared, and how much hidden.'
       ],
       choices: [
         { text: 'Declare the wine in full, and hide all the tea.',
           target: '3.3_customs',
-          effects: { flags: { manifest: 'tea_hidden' }, exposure: +4, trust: +6 },
+          effects: { flags: { manifest: 'tea_hidden' }, exposure: +6, trust: +6 },
           lesson: 'The boldest under-declaration concealed the most valuable cargo entirely. It produced the largest margin (tea bore far higher duties than wine), but it left the discovery of even one chest fatal: the goods would be condemned and an information *ad personam* laid for triple value.'
         },
         { text: 'Declare the wine, declare a portion of the tea, hide the rest.',
           target: '3.3_customs',
           effects: { flags: { manifest: 'partial' }, exposure: -2, trust: 0 },
-          lesson: 'Partial declarations were the professional strategy. Paying *some* duty was credible, kept the gang on the official ledgers, and supplied an answer to any awkward question. The historian David Chan Smith calls this the "bargaining" character of smuggling enforcement — a managed compromise rather than absolute evasion.'
+          lesson: 'Partial declarations were the professional strategy. Paying *some* duty was credible, kept the gang on the official ledgers, and supplied an answer to any awkward question from officers.'
         },
         { text: 'Declare every chest. Take the duty as the price of safety.',
           target: '3.3_customs',
@@ -651,16 +651,16 @@ const CONTENT = {
       audio: 'assets/audio/scene_3_3_custom_house.mp3', // scratching pens, low murmur, wall-clock
       body: [
         'You climb the steps under the pediment with the manifest in your coat. The clerk takes it; reads it; passes it to a *land-waiter*. The land-waiter is **Mr. Reeve**.',
-        { dlg: 'Mr. Reeve, land-waiter', text: 'Mr. {{name}}. A pleasure. Mr. Boyse has spoken of you. The wine is plain enough. Shall we walk down to the Quay together, to attend the searcher?' },
+        { dlg: 'Mr. Reeve, land-waiter', text: '{{name}}. A pleasure. Mr. Boyse has spoken of you. The wine is plain enough. Shall we walk down to the Quay together, to attend the searcher?' },
         'A second officer crosses the room behind him. Older, with a sharp eye and a wig that has not been fresh in some years. This must be **Mr. Henwood**, of whom Mr. Reeve does not speak.'
       ],
       choices: [
         { text: 'Walk down with Mr. Reeve, alone, and trust the arrangement.',
           target: '3.4_reeve',
-          effects: { exposure: -2, trust: +2 },
+          effects: { exposure: -5, trust: +2 },
           lesson: 'Trusting a corrupt officer was the smuggler\'s ordinary risk. Reeve\'s "consideration" was an unwritten contract — enforceable only by repetition and reputation. Boyse paid him for years on this footing; the system held until it didn\'t.'
         },
-        { text: 'Insist that Mr. Henwood attend also — appear above suspicion.',
+        { text: 'Insist that Mr. Henwood attend also so as to appear above suspicion.',
           target: '3.4_henwood',
           effects: { exposure: -8, trust: -12 },
           lesson: 'Inviting an honest officer into your business was a defensive posture — a fair-trader\'s gambit — that cleared you with the Customs but mortified the gang.'
@@ -686,12 +686,12 @@ const CONTENT = {
         },
         { text: 'Promise him by note — through Mr. Boyse — in three days.',
           target: '3.5_after',
-          effects: { exposure: +3, trust: +2 },
-          lesson: 'A promised payment created a creditor — and a creditor was a witness. Reeve\'s memory of you and your business now had three days to ferment. In Pulsom\'s evidence, several officers turned informant precisely because their promised "considerations" had gone unpaid.'
+          effects: { exposure: +5, trust: -2 },
+          lesson: 'A promised payment created a creditor — and a creditor was a witness. Reeve\'s memory of you and your business now had three days to ferment.'
         },
         { text: 'Refuse, and threaten him with a counter-information if he troubles you.',
           target: '3.5_after',
-          effects: { exposure: +15, trust: -8 },
+          effects: { exposure: +20, trust: -10 },
           lesson: 'Threatening a corrupt officer was the worst of both worlds. Reeve now had no incentive to protect you and every incentive to inform on you first — *vexatious* counter-informations were a known smuggler\'s tactic, but only successful when paired with payment, never with threat alone.'
         }
       ]
@@ -709,7 +709,7 @@ const CONTENT = {
       choices: [
         { text: 'Submit; admit the partial declaration; pay the duty and triple penalty if levied.',
           target: '3.5_after',
-          effects: { exposure: -10, trust: -20, flags: { caughtPartial: true } },
+          effects: { exposure: -15, trust: -20, flags: { caughtPartial: true } },
           lesson: 'Voluntary submission brought *civil* penalties — a triple-value penalty for unpaid duty, recoverable as debt, but negotiable. Painful but survivable. The gang, however, treated such submissions as betrayal: every penalty paid by one man revealed the gang\'s tactics to the Customs solicitors.'
         },
         { text: 'Offer him a private gift — ten guineas in his pocket.',
@@ -718,7 +718,7 @@ const CONTENT = {
         },
         { text: 'Strike the candle from his hand and go.',
           target: '3.4b_henwood_flee',
-          effects: { exposure: +20, trust: +4 },
+          effects: { exposure: +30, trust: +4 },
           lesson: 'Assault on a Customs officer was a felony. Boyse will admire the boldness in private and disclaim it in public. Your face is now a face every officer in the south will know.'
         }
       ]
@@ -731,12 +731,12 @@ const CONTENT = {
       caption: 'Mr. Henwood will not be bought.',
       body: [
         { dlg: 'Mr. Henwood', text: 'You mistake me, sir. Put up your purse. I shall pretend you did not offer it, but I shall not pretend the cargo is what it is not.' },
-        'He calls for the Mayor\'s constable. The cargo is condemned by writ of appraisement. Mr. Boyse will not be pleased.'
+        'He calls for the Mayor\'s constable. The cargo will be condemned by writ of appraisement. Mr. Boyse will not be pleased.'
       ],
       choices: [
         { text: 'Bow, and bear it.',
           target: '3.5_after',
-          effects: { exposure: +15, trust: -10, flags: { caughtBribery: true } },
+          effects: { exposure: +20, trust: -20, flags: { caughtBribery: true } },
           lesson: 'Honest officers existed in numbers contemporaries underestimated. An attempted bribe to an honest officer became, by his own deposition, hard evidence of corrupt intent.'
         }
       ]
