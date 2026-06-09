@@ -70,8 +70,8 @@ const CONTENT = {
       title: 'THE RUNNING TRADE',
       subtitle: "A Smuggler's Reckoning — Anno Dom. 1725",
       body: [
-        'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high and so the temptation to evade them is higher. Some items, including at times French brandy and types of cottons, are even prohibited altogether. Consumers want cheaper, tax-free goods and more selection. Sellers are happy to offer them if they can. Whole communities along the southern coast of England live by what contemporaries call **the running trade**.',
-        'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period, and they presented themselves as wine merchants. Their organization was real and so was their fate.',
+        'The British government in 1725 derives almost two-thirds of its revenue from customs and excise duties on goods like tobacco, brandy, tea, and silks. The duties are high and so the temptation to evade them is higher. Some items, including at times French brandy and types of cottons, are even prohibited altogether. Consumers want cheaper, tax-free goods and more selection. Sellers are happy to offer them if they can. Many communities along the southern coast of England thrive by what contemporaries call **the running trade**.',
+        'Gangs run this transnational business. You have a part to play if you choose. Many of these gangs and criminal organizations have legitimate fronts. **David Boyse** and his partners **John Hatch** and **John Sellers** were among the most important during the period, and they presented themselves as wine merchants. Their organization was real but in this game you can perhaps lead them to a different fate.',
         { html: '<div class="meters-key"><div class="key-exp"><strong>EXPOSURE</strong> — how far the Customs suspect you. Reach 100 and an information will be laid against you in the Court of Exchequer.</div><div class="key-tru"><strong>TRUST</strong> — your standing with your confederates. Fall to 0 and they will sell you to save themselves.</div></div>' },
         'Every choice that moves a meter will be followed by a brief *Reflection* — the historical reasoning behind the consequence.'
         
@@ -86,8 +86,8 @@ const CONTENT = {
       John Hatch and John Sellers, ran a substantial cross-Channel smuggling syndicate
       until their clerk Isaac Poulsum turned King's evidence.</p>
       <p>The goal of the game is to learn about the dynamics of eighteenth-century smuggling and its underworld.</p>
-      <p>The mechanics — debenture frauds, "running" cargoes by moonlight,
-      under-declarations, bribery of land-waiters, riding officers patrolling the coast,
+      <p>The mechanics — frauds, "running" cargoes by moonlight,
+      under-declarations, bribery of port officers and riding officers patrolling the coast,
       informations in the Court of Exchequer
       — are drawn from the 1733 House of Commons <em>Report on the Frauds and
       Abuses in the Customs</em> and the reports of contemporary writers.</p>
