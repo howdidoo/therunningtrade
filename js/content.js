@@ -1307,7 +1307,7 @@ const CONTENT = {
       audio: 'assets/audio/scene_5_7_customs_stairs.mp3',  // hobnails on stone, distant Thames bells
       body: [
         'You leave Mr. Boyse\'s parlour with a civil bow and walk, by coach and stage, the hundred and twelve miles to London. You take a chamber off Tower Hill. You shave. You write, in a careful hand, a letter to the **Solicitor for the Customs**, requesting an audience — not as an informer in the ordinary sense, but as a *practitioner of the trade desirous of His Majesty\'s commission*.',
-        'You are received, on the third day, by the Solicitor and by a sober gentleman introduced as **Mr. Carkesse, Comptroller of the King\'s Cocketts**. They listen, with a long professional patience, to what you have to say.',
+        'You are received, on the third day, by the Solicitor and by a sober gentleman introduced as **Mr. Carkesse, his assistant**. They listen, with a long professional patience, to what you have to say.',
         { dlg: 'The Solicitor for the Customs', text: '{{name}}. The Crown has from time to time taken into its service persons who have stood, formerly, against its revenues. Such people can be useful, if they bring with them not only knowledge but also discipline. You will be examined. You will be sworn. You will not be paid until you have proved yourself. Do you accept?' }
       ],
       choices: [
@@ -1426,7 +1426,7 @@ const CONTENT = {
         in this period — many men crossed it, and some, like the figure imagined
         here, lived on both sides at once. The Customs Establishment regularly
         dismissed officers for "negligence" rather than prosecute them.</p>
-        <p>This was the loose, bargained character of early-eighteenth-century
+        <p>This was the loose character of early-eighteenth-century
         enforcement that distinguishes it from the harder enforcement
         of the later 18th and 19th centuries.</p>
       `
@@ -1443,7 +1443,7 @@ const CONTENT = {
       body: [
         { dlg: 'David Boyse', text: 'A last run, then. Yes. There is one, {{name}}. Not for brandy nor for tea, but for a man. A gentleman of Scotland, who has been five years in the company of the *Chevalier de St. George* at Rome, lately at Bordeaux upon his particular business. He is to be brought into England by a coast at which the Customs do not expect him.' },
         { dlg: 'David Boyse', text: 'I should not put this work upon you if I did not trust you above the common sort. The *passenger* is a Ms. **Arabella **, late of Pitsligo. The reward is two hundred guineas in hand and the matter of Crouch wiped clean between us, sir. Will you do it?' },
-        'You understand at once that this is not the simple piece of smuggling Boyse pretends. *Jacobite* sympathies are the open secret of his counting house. To bring Ms.  ashore is to put yourself, knowingly, into the political traffic between Rome, Paris, and the disaffected gentry of north-east Scotland.'
+        'You understand at once that this is not the simple piece of smuggling Boyse pretends. *Jacobite* sympathies are the open secret of his counting house. The Jacobites sought the restoration of the Stuart monarchy to the throne from their exile. To bring Ms. Murray ashore is to put yourself, knowingly, into the political traffic between Rome, Paris, and the disaffected gentry of north-east Scotland.'
       ],
       choices: [
         { text: 'Agree, asking only the conditions of the run — the coast, the master, the date.',
@@ -1529,7 +1529,7 @@ const CONTENT = {
         'The landing is made — by your route, at your hour, in your weather. Ms.  steps from the Dolphin\'s gig into knee-deep surf with the dignity of a woman stepping into a pew. She shakes your hand. She gives you, from the inside of her coat, not coin but a small *enamelled snuffbox* — and presses it upon you with both hands.',
         { dlg: 'Arabella ', text: '{{name}}. I shall not forget this service. There is a Cause to which those of your courage are dear above price; if ever a King over the water finds his way home, he shall hear your name from my mouth. Take this snuff-box, and consider it a *pledge*: with God\'s grace, it shall be redeemed in a better coin than guineas.' },
         'She turns. She walks up the shingle. She is met, beyond the high-water mark, by a man in a blue coat. They mount; they ride inland; they are gone.',
-        'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *insignia of the House of Stuart*.'
+        'You stand a long moment with the snuffbox in your hand. It bears, very small, beneath the enamel, the *insignia of the House of Stuart*. The Stuarts were deposed in 1688 and their supporters were watched as potential traitors seeking to restore the Old Pretender to the throne. To carry such a token was to declare, in the eyes of the law, that you were a traitor too.'
       ],
       onEnter: (s) => { s.flags.jacobiteLanded = true; },
       choices: [
@@ -1719,7 +1719,7 @@ const CONTENT = {
         'You are brought, the next forenoon, into the Long Room of the Custom House at Portsmouth. The Solicitor for the Customs sits at the head of a deal table. His clerk reads from a printed form. There is a Bible. There is no jury — this is a Customs examination, not a trial.',
         { dlg: 'The Solicitor', text: '{{name}}, you stand examined upon information laid against you by the Collector at Poole, in the matter of certain tobaccoes debentured for export and re-imported into this kingdom, contrary to the Statute. You are not on this day required to plead; you are required to give such answers, upon oath, as shall enable His Majesty\'s officers to frame their further proceedings against you.' },
         { dlg: 'The Solicitor', text: 'Will you swear, {{name}}, that you were not aboard the sloop *Dolphin*, Tom Cooper master, in the matter of an export bond for 73,157 lbs of Virginia leaf, dated the 12th of February last?' },
-        'You feel, very precisely, the *mousetrap* close. Three answers are open to you, and three only. The Solicitor watches your face. His clerk holds his pen above his paper. The mousetrap does not need you to answer; it needs only your *manner* of not answering.'
+        'You feel, very precisely, danger close. Three answers are open to you, and three only. The Solicitor watches your face. His clerk holds his pen above his paper. The mousetrap does not need you to answer; it needs only your *manner* of not answering.'
       ],
       choices: [
         { text: 'Deny everything. Refuse the oath. Demand counsel.',
@@ -1775,13 +1775,13 @@ const CONTENT = {
       caption: 'You have been used so as your confederates may be safe.',
       body: [
         'You have lost the trust of the men who keep you alive. You discover it, as such men always discover it, too late: at three in the morning, in the yard of an inn, with two of your former friends standing between you and the gate.',
-        'You wake (you will be told later) in the Marshalsea, nominated upon an information laid that very morning by a man who once called you brother.'
+        'You wake (you will be told later) in the county gaol, accused upon an information laid that very morning by a man who once called you brother.'
       ],
       ending: true,
       endingTitle: 'An Ending — Betrayed',
-      endingFlag: 'FINIS — THE FALSE BROTHER',
+      endingFlag: 'FINIS — BETRAYED BY YOUR OWN',
       endingHtml: `
-        <p>Smuggling syndicates governed themselves by ferocious internal discipline.
+        <p>Smuggling gangs depended on trust. Losing the trust of your comrades meant expulsion from the gang -- or worse, betrayal to the authorities by those who sought the reward. 
          </p>
       `
     }
