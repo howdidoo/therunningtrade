@@ -103,9 +103,9 @@ const CONTENT = {
       <hr style="border:none;border-top:1px dashed var(--ink-soft);margin:14px 0;" />
 
       <h4 style="font-family:var(--font-sc);font-size:16px;color:var(--wax-red);margin:6px 0 6px;">Version History</h4>
-      <p style="font-family:var(--font-sc);font-size:14px;color:var(--ink-soft);margin:0 0 4px;">Current version: <strong>0.5 BETA</strong> (17 May 2026).</p>
+      <p style="font-family:var(--font-sc);font-size:14px;color:var(--ink-soft);margin:0 0 4px;">Current version: <strong>v.6 BETA - revised text (10 June 2026).</p>
       <ul style="margin:4px 0 4px 18px;font-size:15px;line-height:1.45;">
-        <li><strong>v.5 BETA</strong> — First Beta version. Five acts.</li>
+        <li><strong>v.5 BETA</strong> — First Beta version. Five acts. (17 May 2026)</li>
       </ul>
     `
   },
